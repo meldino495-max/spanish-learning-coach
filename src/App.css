@@ -204,9 +204,13 @@ body {
   color: var(--gold);
 }
 
-.day-status {
-  width: 1rem;
-  font-size: 0.75rem;
+.day-btn.day-review {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.day-btn.day-review .day-status {
+  color: var(--accent);
 }
 
 .reset-btn {

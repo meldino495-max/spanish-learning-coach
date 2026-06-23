@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { curriculum, countSteps } from './data/curriculum';
+import { curriculum, countSteps, countGrammarUnits } from './data/curriculum';
 import { useProgress } from './hooks/useProgress';
 import { StepCard } from './components/StepCard';
 import { GoogleLoginBar } from './components/GoogleLoginBar';
@@ -81,18 +81,19 @@ function App() {
                     const done = day.steps.every((s) => progress[s.id]);
                     const active = day.id === selectedDayId;
                     const partial = !done && day.steps.some((s) => progress[s.id]);
+                    const isReview = day.id.includes('review');
                     return (
                       <button
                         key={day.id}
                         type="button"
-                        className={`day-btn ${active ? 'active' : ''} ${done ? 'day-done' : ''} ${partial ? 'day-partial' : ''}`}
+                        className={`day-btn ${active ? 'active' : ''} ${done ? 'day-done' : ''} ${partial ? 'day-partial' : ''} ${isReview ? 'day-review' : ''}`}
                         onClick={() => {
                           setSelectedDayId(day.id);
                           if (window.innerWidth < 900) setSidebarOpen(false);
                         }}
                       >
-                        <span className="day-status">{done ? '✓' : partial ? '◐' : '○'}</span>
-                        <span>{day.dayLabel}</span>
+                        <span className="day-status">{done ? '✓' : partial ? '◐' : isReview ? '↻' : '○'}</span>
+                        <span>{isReview ? day.title : `${day.dayLabel} ${day.title}`}</span>
                       </button>
                     );
                   })}
@@ -161,7 +162,7 @@ function App() {
 
       <footer className="footer">
         <p>
-          起点：{curriculum.startLevel} → 目标：{curriculum.targetLevel} · 建议每天：碎片 10 分钟 + 深度 45 分钟
+          {curriculum.startLevel} → {curriculum.targetLevel} · {countGrammarUnits()} 语法单元 · 建议每天：碎片 10 分钟 + 深度 45 分钟
         </p>
         <p className="footer-tip">口语/听写推荐 Microsoft Edge · 允许麦克风权限</p>
       </footer>
