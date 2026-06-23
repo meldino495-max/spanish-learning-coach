@@ -9,7 +9,12 @@ export type StepType =
   | 'link'
   | 'vocab'
   | 'fillblank'
-  | 'translate';
+  | 'translate'
+  | 'chunk'
+  | 'feynman'
+  | 'shadowing'
+  | 'scenario'
+  | 'srs';
 
 export type SessionKind = 'micro' | 'deep' | 'review';
 
@@ -39,12 +44,16 @@ export interface Step {
   quizOptions?: QuizOption[];
   quizExplanation?: string;
   checklist?: string[];
-  /** 词汇积累 */
-  vocabItems?: { es: string; zh: string; note?: string }[];
-  /** 填空练习 */
+  /** 词汇/语块 */
+  vocabItems?: { es: string; zh: string; note?: string; chunkLabel?: string }[];
   fillBlanks?: { prompt: string; answer: string; hint?: string }[];
-  /** 中译西 */
   translationItems?: { zh: string; es: string }[];
+  chunkItems?: { es: string; zh: string; note?: string; chunkLabel?: string }[];
+  feynmanPrompt?: string;
+  feynmanHint?: string;
+  shadowingLines?: string[];
+  scenarioTitle?: string;
+  scenarioItems?: string[];
 }
 
 export interface DayPlan {

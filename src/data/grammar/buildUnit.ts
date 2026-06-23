@@ -1,6 +1,6 @@
 import type { DayPlan, Step, WeekPlan } from '../../types';
 import type { CefrLevel, GrammarTopic } from './types';
-import { isVerbTopic } from './enrichTopic';
+import { getEnrichedScenario, isVerbTopic } from './enrichTopic';
 import { HOLA_PLAYLIST_URL, YOUTUBE_MAP, youtubeSearchUrl } from './types';
 
 function videoStep(id: string, topic: GrammarTopic, session: 'micro' | 'deep'): Step {
@@ -11,11 +11,11 @@ function videoStep(id: string, topic: GrammarTopic, session: 'micro' | 'deep'): 
       id: `${id}-video`,
       type: 'video',
       session,
-      title: `观看：${topic.titleEs}`,
+      title: `① 听：${topic.titleEs}`,
       durationMin: session === 'micro' ? 8 : 15,
       youtubeId: v.id.startsWith('PL') ? undefined : v.id,
       youtubeTitle: v.title,
-      instructions: `观看视频，记录：① 本语法点的 2 条核心规则 ② 视频中的 3 个例句。\n\n主题：${topic.title}`,
+      instructions: `【听】观看视频，记录 2 条规则 + 3 个例句。\n\n学习顺序：听 → 说 → 读 → 写`,
       url: v.id.startsWith('PL') ? HOLA_PLAYLIST_URL : undefined,
       urlLabel: v.id.startsWith('PL') ? '打开 Hola Spanish 播放列表' : undefined,
     };
@@ -25,11 +25,11 @@ function videoStep(id: string, topic: GrammarTopic, session: 'micro' | 'deep'): 
     id: `${id}-video`,
     type: 'link',
     session,
-    title: `观看：${topic.titleEs}`,
+    title: `① 听：${topic.titleEs}`,
     durationMin: 10,
     url: youtubeSearchUrl(search),
     urlLabel: '在 YouTube 搜索教学视频',
-    instructions: `打开 YouTube 搜索「${search}」，选 8–15 分钟的教学视频观看。记 3 个例句。`,
+    instructions: `【听】搜索「${search}」，选 8–15 分钟视频。`,
   };
 }
 
@@ -38,7 +38,7 @@ function quizStep(id: string, suffix: string, q: GrammarTopic['quiz'], session: 
     id: `${id}-quiz-${suffix}`,
     type: 'quiz',
     session,
-    title: suffix === '1' ? '测验' : `加练测验 ${suffix}`,
+    title: suffix === '1' ? '⑭ 写：测验' : `加练测验 ${suffix}`,
     durationMin: 5,
     quizQuestion: q.question,
     quizOptions: q.options.map((text, i) => ({ text, correct: i === q.correctIndex })),
@@ -46,104 +46,154 @@ function quizStep(id: string, suffix: string, q: GrammarTopic['quiz'], session: 
   };
 }
 
+/**
+ * 学习顺序：听 → 说 → 读 → 写
+ * 方法融合：SRS + 语块 + 影子跟读 + 费曼 + 场景
+ */
 export function buildGrammarDay(level: CefrLevel, index: number, topic: GrammarTopic): DayPlan {
   const id = `${level.toLowerCase()}-${topic.id}`;
+  const scenario = getEnrichedScenario(index);
+
   const steps: Step[] = [
+    // —— 听 ——
     videoStep(id, topic, 'micro'),
     {
-      id: `${id}-read`,
-      type: 'read',
-      session: 'deep',
-      title: '语法规则',
-      durationMin: 10,
-      instructions: `${topic.rules}\n\n例句（抄写并翻译）：\n${topic.examples.map((e, i) => `${i + 1}. ${e}`).join('\n')}`,
-    },
-    {
-      id: `${id}-vocab`,
-      type: 'vocab',
+      id: `${id}-shadowing`,
+      type: 'shadowing',
       session: 'micro',
-      title: '词汇积累',
+      title: '② 听+说：影子跟读',
       durationMin: 8,
-      vocabItems: topic.vocabulary,
-      instructions:
-        '翻转卡片记忆。点击 🔊 听发音。不熟的词稍后「加入积累本」，碎片时间反复复习。',
-    },
-    {
-      id: `${id}-fillblank`,
-      type: 'fillblank',
-      session: 'deep',
-      title: '填空练习',
-      durationMin: 10,
-      fillBlanks: topic.fillBlanks,
-      instructions: '根据本课语法填入缺失的词。注意动词变位、冠词、代词。',
-    },
-    {
-      id: `${id}-practice`,
-      type: 'practice',
-      session: 'deep',
-      title: '动手练习（6 项）',
-      durationMin: 20,
-      instructions: '逐项完成，建议计时。完成一项打勾一项。',
-      checklist: topic.practiceItems,
-    },
-    {
-      id: `${id}-translate`,
-      type: 'translate',
-      session: 'deep',
-      title: '翻译练习',
-      durationMin: 12,
-      translationItems: topic.translationDrills,
-      instructions: '先独立写西语，再核对参考答案。错误写入错题本。',
+      shadowingLines: topic.shadowingLines,
+      instructions: 'Shadowing：播放后几乎同时跟读，模仿语调。每句 3 遍。',
     },
     {
       id: `${id}-dictation-1`,
       type: 'dictation',
       session: 'micro',
-      title: '听写 ①',
+      title: '③ 听：听写 ①',
       durationMin: 5,
       dictationText: topic.dictation ?? topic.examples[0] ?? topic.speakPrompt.slice(0, 80),
       dictationHint: topic.titleEs,
-      instructions: '播放朗读，写下听到的内容，然后核对答案。',
+      instructions: '【听→写】先听再写，训练耳朵。',
     },
-    ...(topic.extraDictations ?? []).slice(0, 2).map((text, i) => ({
+    ...(topic.extraDictations ?? []).slice(0, 1).map((text, i) => ({
       id: `${id}-dictation-${i + 2}`,
       type: 'dictation' as const,
       session: 'micro' as const,
-      title: `听写 ${['②', '③'][i]}`,
+      title: `听写 ${['②', '③'][i] ?? ''}`,
       durationMin: 5,
       dictationText: text,
-      dictationHint: topic.titleEs,
-      instructions: '再听一遍，加深记忆。',
+      instructions: '再听一遍，加深语块印象。',
     })),
+
+    // —— 说 ——
+    {
+      id: `${id}-chunks`,
+      type: 'chunk',
+      session: 'deep',
+      title: '④ 说：语块学习（背整句）',
+      durationMin: 10,
+      chunkItems: topic.chunks,
+      instructions:
+        '不要记 hambre=饥饿，要记 Tengo hambre. 整句加入 SRS，间隔 1/3/7/14/30 天复习。',
+    },
     {
       id: `${id}-speak-1`,
       type: 'speak',
       session: 'deep',
-      title: '口语 ①',
+      title: '⑤ 说：口语 ①',
       durationMin: 8,
       speakPrompt: topic.speakPrompt,
       speakHint: topic.speakHint,
-      instructions: '录音说出参考内容，或换成你自己的话，但必须用本课语法。',
+      instructions: '【说】用本课语法开口，不要只在心里翻译。',
     },
-    ...(topic.extraSpeakPrompts ?? []).slice(0, 2).map((prompt, i) => ({
+    ...(topic.extraSpeakPrompts ?? []).slice(0, 1).map((prompt, i) => ({
       id: `${id}-speak-${i + 2}`,
       type: 'speak' as const,
       session: 'deep' as const,
-      title: `口语 ${['②', '③'][i]}`,
+      title: `⑥ 说：口语 ${['②', '③'][i]}`,
       durationMin: 8,
       speakPrompt: prompt,
-      instructions: '自由发挥，尽量多说几句，不要停超过 3 秒。',
     })),
+    {
+      id: `${id}-feynman`,
+      type: 'feynman',
+      session: 'deep',
+      title: '⑦ 说：费曼讲解',
+      durationMin: 8,
+      feynmanPrompt: topic.feynmanQuestion,
+      feynmanHint: topic.feynmanHint,
+      instructions: '费曼法：用中文把语法讲给「完全不懂的人」。讲明白 = 真懂。',
+    },
+    {
+      id: `${id}-scenario`,
+      type: 'scenario',
+      session: 'deep',
+      title: `⑧ 说：场景联想 ${scenario.icon}`,
+      durationMin: 8,
+      scenarioTitle: `${scenario.icon} ${scenario.title}`,
+      scenarioItems: [
+        ...scenario.chunks.map((c: { es: string }) => c.es),
+        `（练习）环顾四周，用西语描述 3 样东西`,
+      ],
+      instructions: '场景记忆：在脑海中「进入」这个场景，说出每句话。',
+    },
+
+    // —— 读 ——
+    {
+      id: `${id}-read`,
+      type: 'read',
+      session: 'deep',
+      title: '⑨ 读：语法规则',
+      durationMin: 10,
+      instructions: `${topic.rules}\n\n例句（朗读 3 遍 + 翻译）：\n${topic.examples.map((e, i) => `${i + 1}. ${e}`).join('\n')}`,
+    },
+
+    // —— 写 ——
+    {
+      id: `${id}-fillblank`,
+      type: 'fillblank',
+      session: 'deep',
+      title: '⑩ 写：填空',
+      durationMin: 10,
+      fillBlanks: topic.fillBlanks,
+    },
+    {
+      id: `${id}-translate`,
+      type: 'translate',
+      session: 'deep',
+      title: '⑪ 写：翻译',
+      durationMin: 12,
+      translationItems: topic.translationDrills,
+    },
+    {
+      id: `${id}-practice`,
+      type: 'practice',
+      session: 'deep',
+      title: '⑫ 写：综合练习',
+      durationMin: 15,
+      checklist: topic.practiceItems,
+    },
     quizStep(id, '1', topic.quiz, 'deep'),
-    ...(topic.extraQuizzes ?? []).map((q, i) => quizStep(id, String(i + 2), q, i === 0 ? 'micro' : 'deep')),
+    ...(topic.extraQuizzes ?? []).slice(0, 2).map((q, i) => quizStep(id, String(i + 2), q, 'micro')),
+
+    // —— SRS 复习 ——
+    {
+      id: `${id}-srs`,
+      type: 'srs',
+      session: 'micro',
+      title: '⑮ 间隔重复复习',
+      durationMin: 5,
+      instructions: '复习已到期的语块。今天新学的会在 1/3/7/14/30 天后再次出现。',
+    },
     {
       id: `${id}-reflect`,
       type: 'reflect',
       session: 'micro',
-      title: '错题与积累',
+      title: '⑯ 复盘',
       durationMin: 5,
       instructions:
-        '① 本课最容易错的 1 点写进错题本\n② 不熟的 3 个词加入积累本\n③ 用 1 句话总结本课语法\n④ 明天复习时先回顾这 3 项',
+        '① 费曼：能否用一句话解释本课语法？\n② SRS：今日新语块是否已加入？\n③ 场景：能说出 1 个生活场景中的句子吗？\n④ 错题写入错题本',
     },
   ];
 
@@ -154,8 +204,8 @@ export function buildGrammarDay(level: CefrLevel, index: number, topic: GrammarT
       session: 'micro',
       title: '变位加练',
       url: 'https://conjuguemos.com',
-      urlLabel: 'Conjuguemos 动词变位',
-      instructions: `打开 Conjuguemos，选择与本课「${topic.title}」对应的时态/语气，练习 10 分钟。`,
+      urlLabel: 'Conjuguemos',
+      instructions: `针对「${topic.title}」练变位 10 分钟。`,
     });
   }
 
@@ -170,39 +220,46 @@ export function buildGrammarDay(level: CefrLevel, index: number, topic: GrammarT
 
 export function buildReviewDay(level: CefrLevel, weekNum: number, topics: GrammarTopic[]): DayPlan {
   const id = `${level.toLowerCase()}-review-w${weekNum}`;
-  const allVocab = topics.flatMap((t) => t.vocabulary ?? []).slice(0, 15);
+  const allChunks = topics.flatMap((t) => t.chunks ?? []).slice(0, 12);
 
   return {
     id,
     dayLabel: `${level} 复习 W${weekNum}`,
     title: `${level} 第 ${weekNum} 周复习`,
-    goal: `巩固本周 ${topics.length} 个语法点，大量练习`,
+    goal: `SRS + 语块 + 影子跟读 + 费曼 综合复习`,
     steps: [
       {
-        id: `${id}-list`,
-        type: 'read',
+        id: `${id}-srs`,
+        type: 'srs',
         session: 'deep',
-        title: '本周语法清单',
+        title: 'SRS 到期复习',
         durationMin: 10,
-        instructions: `每个语法点用 1 句话总结规则：\n${topics.map((t, i) => `${i + 1}. ${t.title} (${t.titleEs})`).join('\n')}`,
+        instructions: '优先复习所有到期语块。',
       },
       {
-        id: `${id}-vocab`,
-        type: 'vocab',
-        session: 'micro',
-        title: '本周词汇总复习',
+        id: `${id}-chunks`,
+        type: 'chunk',
+        session: 'deep',
+        title: '本周语块总复习',
         durationMin: 10,
-        vocabItems: allVocab,
-        instructions: '复习本周全部词汇，全部加入积累本。',
+        chunkItems: allChunks,
+        instructions: '整句复习，全部重新加入 SRS 或自评。',
       },
       {
-        id: `${id}-quiz-batch`,
-        type: 'practice',
+        id: `${id}-shadowing`,
+        type: 'shadowing',
         session: 'deep',
-        title: '测验重做',
-        durationMin: 25,
-        instructions: `重做错题：回到本周 ${topics.length} 课，重做所有「测验」和「加练测验」。`,
-        checklist: topics.map((t) => `重做：${t.title}`),
+        title: '影子跟读综合',
+        durationMin: 10,
+        shadowingLines: topics.flatMap((t) => t.examples).slice(0, 8),
+      },
+      {
+        id: `${id}-feynman`,
+        type: 'feynman',
+        session: 'deep',
+        title: '费曼：讲解本周语法',
+        durationMin: 10,
+        feynmanPrompt: `选本周 2 个语法点，用中文向朋友解释区别：\n${topics.map((t) => `- ${t.title}`).join('\n')}`,
       },
       {
         id: `${id}-speak`,
@@ -210,17 +267,7 @@ export function buildReviewDay(level: CefrLevel, weekNum: number, topics: Gramma
         session: 'deep',
         title: '综合口语 5 分钟',
         durationMin: 10,
-        instructions: '计时 5 分钟不间断，必须用到至少 3 个本周语法点。',
-        speakPrompt: `（涵盖：${topics.map((t) => t.titleEs).join('、')}）`,
-      },
-      {
-        id: `${id}-dictation`,
-        type: 'dictation',
-        session: 'micro',
-        title: '综合听写',
-        durationMin: 8,
-        dictationText: topics.map((t) => t.examples[0]).filter(Boolean).join(' ').slice(0, 120),
-        instructions: '听写本周例句组合，难度较高，可重复播放。',
+        speakPrompt: `（用本周语法自由说 5 分钟：${topics.map((t) => t.titleEs).join('、')}）`,
       },
       {
         id: `${id}-link`,
@@ -229,7 +276,7 @@ export function buildReviewDay(level: CefrLevel, weekNum: number, topics: Gramma
         title: '在线加练',
         url: 'https://conjuguemos.com',
         urlLabel: 'Conjuguemos',
-        instructions: '补充练习 15 分钟。',
+        instructions: '补充 15 分钟。',
       },
     ],
   };

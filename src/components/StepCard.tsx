@@ -4,22 +4,31 @@ import { SpeakStep } from './SpeakStep';
 import { DictationStep } from './DictationStep';
 import { QuizStep } from './QuizStep';
 import { GenericStep } from './GenericStep';
-import { VocabStep } from './VocabStep';
+import { ChunkStep } from './ChunkStep';
 import { FillBlankStep } from './FillBlankStep';
 import { TranslateStep } from './TranslateStep';
+import { FeynmanStep } from './FeynmanStep';
+import { ShadowingStep } from './ShadowingStep';
+import { ScenarioStep } from './ScenarioStep';
+import { SRSStep } from './SRSStep';
 
 const TYPE_LABELS: Record<StepType, string> = {
-  video: '📺 观看视频',
-  speak: '🎤 口语练习',
-  dictation: '✍️ 听写',
-  quiz: '📝 测验',
-  read: '📖 阅读',
-  practice: '💪 动手练习',
-  reflect: '🪞 复盘反思',
-  link: '🔗 外部资源',
-  vocab: '📚 词汇积累',
-  fillblank: '✏️ 填空',
-  translate: '🔄 翻译',
+  video: '📺 听：视频',
+  speak: '🎤 说：口语',
+  dictation: '👂 听：听写',
+  quiz: '📝 写：测验',
+  read: '📖 读：语法',
+  practice: '💪 写：练习',
+  reflect: '🪞 复盘',
+  link: '🔗 资源',
+  vocab: '📚 词汇',
+  fillblank: '✏️ 写：填空',
+  translate: '🔄 写：翻译',
+  chunk: '📦 说：语块',
+  feynman: '🧠 说：费曼',
+  shadowing: '👥 听+说：跟读',
+  scenario: '🎬 说：场景',
+  srs: '🔁 SRS 复习',
 };
 
 const SESSION_LABELS = {
@@ -46,12 +55,21 @@ export function StepCard({ step, index, done, onToggle }: Props) {
         return <DictationStep step={step} done={done} onToggle={onToggle} />;
       case 'quiz':
         return <QuizStep step={step} done={done} onToggle={onToggle} />;
+      case 'chunk':
       case 'vocab':
-        return <VocabStep step={step} done={done} onToggle={onToggle} />;
+        return <ChunkStep step={step} done={done} onToggle={onToggle} />;
       case 'fillblank':
         return <FillBlankStep step={step} done={done} onToggle={onToggle} />;
       case 'translate':
         return <TranslateStep step={step} done={done} onToggle={onToggle} />;
+      case 'feynman':
+        return <FeynmanStep step={step} done={done} onToggle={onToggle} />;
+      case 'shadowing':
+        return <ShadowingStep step={step} done={done} onToggle={onToggle} />;
+      case 'scenario':
+        return <ScenarioStep step={step} done={done} onToggle={onToggle} />;
+      case 'srs':
+        return <SRSStep step={step} done={done} onToggle={onToggle} />;
       default:
         return <GenericStep step={step} done={done} onToggle={onToggle} />;
     }

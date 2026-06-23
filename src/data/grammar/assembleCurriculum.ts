@@ -70,7 +70,7 @@ export function buildFullCurriculum(): Curriculum {
 
   return {
     title: '西语完整语法路线 A1→C2',
-    subtitle: `${totalTopics} 语法单元 · 每课 15+ 练习步骤 · 词汇积累本 · A1→C2`,
+    subtitle: `${totalTopics} 语法单元 · SRS + 语块 + 跟读 + 费曼 · A1→C2`,
     startLevel: 'A1（零基础）',
     targetLevel: 'C2（精通）',
     phases,

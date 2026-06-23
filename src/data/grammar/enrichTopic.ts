@@ -1,12 +1,6 @@
 import type { CefrLevel, GrammarTopic } from './types';
 import { pickVocabForUnit, TOPIC_VOCAB, type VocabEntry } from './vocabBank';
-
-function pickWordsFromExamples(examples: string[]): string[] {
-  return examples
-    .flatMap((e) => e.replace(/[¿?¡!.,]/g, '').split(/\s+/))
-    .filter((w) => w.length > 3 && /^[A-Za-zÁÉÍÓÚáéíóúÑñü]+$/.test(w))
-    .slice(0, 5);
-}
+import { pickChunksForTopic, getScenarioForUnit } from './chunkBank';
 
 function makeFillBlanksFromExamples(examples: string[]): { prompt: string; answer: string }[] {
   return examples.slice(0, 3).map((ex) => {
@@ -80,31 +74,47 @@ function makeExtraSpeak(topic: GrammarTopic): string[] {
 function makePracticeItems(topic: GrammarTopic): string[] {
   const base = topic.practiceItems ?? [];
   const generated = [
-    `变位/转换快练：针对「${topic.titleEs}」写 10 个不同主语（yo/tú/él/nosotros）的句子`,
+    `【语块】背 3 个整句，不要孤立背单词`,
+    `【费曼】用自己的话解释本课语法（见费曼步骤）`,
+    `【影子跟读】每句跟读 3 遍，模仿语调`,
+    `变位快练：针对「${topic.titleEs}」写 10 个不同主语的句子`,
+    `【场景】看到身边 3 样东西，用西语描述（Estoy en... Es mi...）`,
     `错题本：把本课例句改写成否定句或疑问句各 2 句`,
-    `影子跟读：对每条例句朗读 3 遍，录音对比`,
-    `造句挑战：用本语法写 1 句关于工作、1 句关于家庭、1 句关于旅行`,
-    `中→西：不看答案，先写再核对例句`,
   ];
   return [...new Set([...base, ...generated])].slice(0, 6);
 }
 
 export function enrichTopic(level: CefrLevel, unitIndex: number, topic: GrammarTopic): GrammarTopic {
   const topicVocab = TOPIC_VOCAB[topic.id] ?? [];
-  const levelVocab = pickVocabForUnit(level, unitIndex, 6);
-  const vocabulary: VocabEntry[] = [
-    ...topicVocab,
-    ...levelVocab.filter((v) => !topicVocab.some((t) => t.es === v.es)),
-  ].slice(0, 10);
+  const levelVocab = pickVocabForUnit(level, unitIndex, 4);
+  // 优先整句语块，孤立词仅作补充
+  const chunks = topic.chunks?.length
+    ? topic.chunks
+    : pickChunksForTopic(level, unitIndex, topic.examples, 8);
 
-  const keyWords = pickWordsFromExamples(topic.examples);
-  vocabulary.push(
-    ...keyWords.slice(0, 3).map((es) => ({ es, zh: '（本课例句词汇）', note: '见例句' })),
-  );
+  const vocabulary: VocabEntry[] = [
+    ...chunks.map((c) => ({
+      es: c.es,
+      zh: c.zh,
+      note: c.note ?? c.chunkLabel,
+    })),
+    ...topicVocab,
+    ...levelVocab.filter((v) => !topicVocab.some((t) => t.es === v.es)).slice(0, 3),
+  ].slice(0, 12);
 
   return {
     ...topic,
     vocabulary,
+    chunks,
+    feynmanQuestion:
+      topic.feynmanQuestion ??
+      `用中文向「完全不懂西语的朋友」解释：为什么本课例句用这样的语法？（例如：为什么是「${topic.examples[0] ?? topic.titleEs}」而不是别的说法？）`,
+    feynmanHint:
+      topic.feynmanHint ??
+      `参考规则：${topic.rules.slice(0, 120)}…\n能讲明白 = 真懂了。`,
+    shadowingLines:
+      topic.shadowingLines ??
+      [...topic.examples, topic.speakPrompt].filter((s) => s.length > 5 && s.length < 120).slice(0, 5),
     extraQuizzes: makeExtraQuizzes(topic),
     extraDictations: makeExtraDictations(topic),
     extraSpeakPrompts: makeExtraSpeak(topic).slice(1),
@@ -114,6 +124,11 @@ export function enrichTopic(level: CefrLevel, unitIndex: number, topic: GrammarT
     translationDrills: makeTranslationDrills(topic),
     practiceItems: makePracticeItems(topic),
   };
+}
+
+/** 供 buildUnit 读取场景包 */
+export function getEnrichedScenario(unitIndex: number) {
+  return getScenarioForUnit(unitIndex);
 }
 
 export function isVerbTopic(topic: GrammarTopic): boolean {

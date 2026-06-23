@@ -4,7 +4,8 @@ import { useProgress } from './hooks/useProgress';
 import { StepCard } from './components/StepCard';
 import { GoogleLoginBar } from './components/GoogleLoginBar';
 import { AccumulationPanel } from './components/AccumulationPanel';
-import { useAccumulation } from './hooks/useAccumulation';
+import { DailyRoutinePanel } from './components/DailyRoutinePanel';
+import { useSRS } from './hooks/useSRS';
 import type { DayPlan, WeekPlan } from './types';
 import './App.css';
 
@@ -25,8 +26,9 @@ function App() {
   const [selectedDayId, setSelectedDayId] = useState(allDays[0]?.day.id ?? '');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [accumOpen, setAccumOpen] = useState(false);
+  const [accumReview, setAccumReview] = useState(false);
   const { progress, toggleStep, resetAll } = useProgress();
-  const { items: accumItems } = useAccumulation();
+  const { items: srsItems, dueItems } = useSRS();
 
   const totalSteps = countSteps();
   const doneCount = Object.values(progress).filter(Boolean).length;
@@ -65,12 +67,27 @@ function App() {
           </span>
         </div>
         <GoogleLoginBar />
-        <button type="button" className="btn-accum" onClick={() => setAccumOpen(true)} title="我的积累本">
-          📚 {accumItems.length > 0 ? accumItems.length : ''}
+        <button
+          type="button"
+          className={`btn-accum ${dueItems.length > 0 ? 'btn-accum-due' : ''}`}
+          onClick={() => {
+            setAccumReview(false);
+            setAccumOpen(true);
+          }}
+          title="间隔重复 SRS"
+        >
+          🔁 {dueItems.length > 0 ? dueItems.length : srsItems.length || ''}
         </button>
       </header>
 
-      <AccumulationPanel open={accumOpen} onClose={() => setAccumOpen(false)} />
+      <AccumulationPanel
+        open={accumOpen}
+        onClose={() => {
+          setAccumOpen(false);
+          setAccumReview(false);
+        }}
+        startReview={accumReview}
+      />
 
       <div className="layout">
         <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
@@ -119,6 +136,12 @@ function App() {
           {currentDay && currentWeek && (
             <>
               <section className="day-hero">
+                <DailyRoutinePanel
+                  onOpenSRS={() => {
+                    setAccumReview(dueItems.length > 0);
+                    setAccumOpen(true);
+                  }}
+                />
                 <div className="breadcrumb">
                   第 {currentWeek.weekNum} 周 · {currentWeek.focus}
                 </div>

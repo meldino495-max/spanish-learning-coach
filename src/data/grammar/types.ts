@@ -35,6 +35,10 @@ export interface GrammarTopic {
   extraSpeakPrompts?: string[];
   fillBlanks?: { prompt: string; answer: string; hint?: string }[];
   translationDrills?: { zh: string; es: string }[];
+  chunks?: { es: string; zh: string; note?: string; chunkLabel?: string }[];
+  feynmanQuestion?: string;
+  feynmanHint?: string;
+  shadowingLines?: string[];
 }
 
 export const LEVEL_META: Record<
