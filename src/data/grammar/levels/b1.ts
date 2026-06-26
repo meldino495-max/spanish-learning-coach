@@ -12,6 +12,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我希望你学习」？', options: ['Quiero que estudies.', 'Quiero que estudias.', 'Quiero estudias.'], correctIndex: 0 },
     speakPrompt: 'Quiero que hables en español. Espero que tengas un buen día.',
     dictation: 'Es necesario que llegues a tiempo.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：老师考前的叮嘱',
+      context: '一封老师写给学生的考前建议邮件。留意触发虚拟式的结构：es importante que、quiero que、espero que。',
+      sentences: [
+        { es: 'Hola, Marco: te escribo para darte algunos consejos antes del examen.', zh: '你好 Marco：考试前我给你一些建议。' },
+        { es: 'Es importante que estudies un poco cada día.', zh: '重要的是你每天学习一点。' },
+        { es: 'También quiero que practiques con audios y que hables en voz alta.', zh: '我也希望你用音频练习并大声朗读。' },
+        { es: 'Es necesario que duermas bien la noche anterior.', zh: '你前一晚必须睡好。' },
+        { es: 'Espero que tengas suerte y que apruebes sin problemas.', zh: '希望你好运，顺利通过。' },
+        { es: 'Un saludo, tu profesora Elena.', zh: '此致，你的老师 Elena。' },
+      ],
+      questions: [
+        { question: '这封邮件的目的是什么？', options: ['考试前给出建议', '取消考试', '布置新作业'], correctIndex: 0, explanation: '“consejos antes del examen”。' },
+        { question: '老师建议如何学习？', options: ['每天学习一点', '考前一晚突击', '只做听力'], correctIndex: 0, explanation: '“Es importante que estudies un poco cada día.”' },
+        { question: '考试前一晚要做什么？', options: ['睡好觉', '继续熬夜', '出去玩'], correctIndex: 0, explanation: '“Es necesario que duermas bien la noche anterior.”' },
+      ],
+    },
   },
   {
     id: 'subj-wishes',
@@ -24,6 +42,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我请你帮我」？', options: ['Te pido que me ayudes.', 'Te pido que me ayudas.'], correctIndex: 0 },
     speakPrompt: 'Quiero que vengas a la fiesta. Te pido que seas puntual.',
     dictation: 'Espero que todo salga bien.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：给室友的便条',
+      context: '出门前给合租室友留的一张便条，全是请求与愿望。留意 te pido que、espero que、necesito que + 虚拟式。',
+      sentences: [
+        { es: 'Marta, te dejo esta nota porque me voy pronto al trabajo.', zh: 'Marta，我留张便条，因为我要早早去上班。' },
+        { es: 'Te pido que riegues las plantas esta tarde.', zh: '拜托你下午给植物浇水。' },
+        { es: 'Espero que puedas sacar la basura también.', zh: '希望你也能把垃圾倒了。' },
+        { es: 'Quiero que sepas que el lunes viene mi hermano a cenar.', zh: '我想让你知道周一我弟弟来吃晚饭。' },
+        { es: 'Necesito que compres pan y leche, por favor.', zh: '麻烦你买点面包和牛奶。' },
+        { es: '¡Gracias! Nos vemos esta noche.', zh: '谢谢！晚上见。' },
+      ],
+      questions: [
+        { question: '这张便条是写给谁的？', options: ['合租室友 Marta', '公司老板', '语言老师'], correctIndex: 0, explanation: '从「室友 / 留便条出门上班」可判断。' },
+        { question: '作者请 Marta 下午做什么？', options: ['给植物浇水', '打扫卧室', '做晚饭'], correctIndex: 0, explanation: '“Te pido que riegues las plantas esta tarde.”' },
+        { question: '周一会发生什么？', options: ['弟弟来吃晚饭', '房东来收租', '搬家'], correctIndex: 0, explanation: '“el lunes viene mi hermano a cenar”。' },
+      ],
+    },
   },
   {
     id: 'subj-emotions',
@@ -36,6 +72,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我很高兴你来了」？', options: ['Me alegra que hayas venido.', 'Me alegra que has venido.'], correctIndex: 0 },
     speakPrompt: 'Me encanta que cocines tan bien. Me preocupa que no duermas suficiente.',
     dictation: 'Me sorprende que digas eso.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：回复朋友的好消息',
+      context: '朋友找到了新工作，作者回信表达各种情感。留意 me alegra que、me da pena que、me sorprende que + 虚拟式。',
+      sentences: [
+        { es: '¡Hola, Lucía! Acabo de leer tu mensaje.', zh: '你好 Lucía！我刚读了你的消息。' },
+        { es: 'Me alegra mucho que hayas encontrado trabajo en Valencia.', zh: '我很高兴你在瓦伦西亚找到了工作。' },
+        { es: 'Pero me da pena que te vayas tan lejos.', zh: '但你要走那么远，我有点难过。' },
+        { es: 'Me sorprende que la empresa te haya contestado tan rápido.', zh: '公司这么快回复你，我很惊讶。' },
+        { es: 'Me encanta que estés tan contenta con la noticia.', zh: '我很喜欢你对这消息这么开心。' },
+        { es: 'Espero que celebremos juntas antes de que te mudes.', zh: '希望你搬家前我们一起庆祝。' },
+      ],
+      questions: [
+        { question: 'Lucía 有什么好消息？', options: ['在瓦伦西亚找到工作', '中了彩票', '要结婚了'], correctIndex: 0, explanation: '“hayas encontrado trabajo en Valencia”。' },
+        { question: '作者为什么难过？', options: ['朋友要搬到很远的地方', '自己丢了工作', '考试没过'], correctIndex: 0, explanation: '“me da pena que te vayas tan lejos”。' },
+        { question: '作者希望搬家前做什么？', options: ['一起庆祝', '一起搬家', '一起面试'], correctIndex: 0, explanation: '“celebremos juntas antes de que te mudes”。' },
+      ],
+    },
   },
   {
     id: 'subj-doubt',
@@ -48,6 +102,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我认为他对」？', options: ['Creo que tiene razón.', 'Creo que tenga razón.'], correctIndex: 0 },
     speakPrompt: 'No creo que llueva mañana. Dudo que sea tan fácil.',
     dictation: 'No pienso que tenga razón.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：要不要去野餐？',
+      context: '计划在马德里丽池公园野餐，但作者对天气和朋友的意愿都有怀疑。留意 no creo que、dudo que、no es seguro que + 虚拟式。',
+      sentences: [
+        { es: 'Mañana queremos hacer un pícnic en el parque del Retiro.', zh: '明天我们想在丽池公园野餐。' },
+        { es: 'Pero no creo que haga buen tiempo.', zh: '但我不觉得天气会好。' },
+        { es: 'Dudo que mis amigos quieran salir si llueve.', zh: '我怀疑如果下雨，朋友们不愿出门。' },
+        { es: 'No es seguro que Pablo pueda venir, porque trabaja.', zh: '不确定 Pablo 能不能来，因为他要工作。' },
+        { es: 'Creo que es mejor decidir por la mañana.', zh: '我觉得早上再决定更好。' },
+        { es: 'Quizás vayamos a un museo si el plan no sale bien.', zh: '如果计划不成，也许我们去博物馆。' },
+      ],
+      questions: [
+        { question: '他们明天想做什么？', options: ['在丽池公园野餐', '去爬山', '看电影'], correctIndex: 0, explanation: '“hacer un pícnic en el parque del Retiro”。' },
+        { question: '作者担心什么？', options: ['天气不好、可能下雨', '没钱买吃的', '公园关门'], correctIndex: 0, explanation: '“no creo que haga buen tiempo... si llueve”。' },
+        { question: '如果计划不成怎么办？', options: ['去博物馆', '取消整天安排', '在家睡觉'], correctIndex: 0, explanation: '“Quizás vayamos a un museo”。' },
+      ],
+    },
   },
   {
     id: 'subj-impersonal',
@@ -60,6 +132,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「最好你早点睡」？', options: ['Es mejor que te acuestes temprano.', 'Es mejor que te acuestas temprano.'], correctIndex: 0 },
     speakPrompt: 'Es posible que mañana nieve. Es necesario que practiquemos más.',
     dictation: 'Es una lástima que no estés aquí.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：图书馆使用规定',
+      context: '大学图书馆的几条基本规定。留意无人称结构 es importante que、es necesario que、no está permitido que + 虚拟式。',
+      sentences: [
+        { es: 'En la biblioteca de la universidad hay algunas normas básicas.', zh: '大学图书馆有一些基本规定。' },
+        { es: 'Es importante que guardes silencio en las salas de estudio.', zh: '在自习室里保持安静很重要。' },
+        { es: 'Es necesario que apagues el móvil o lo pongas en silencio.', zh: '你必须关机或调成静音。' },
+        { es: 'No está permitido que comas dentro de la sala.', zh: '室内不允许进食。' },
+        { es: 'Es mejor que reserves un sitio si vienes en época de exámenes.', zh: '考试季来的话，最好提前订座。' },
+        { es: 'Es una lástima que mucha gente no respete estas normas.', zh: '很遗憾很多人不遵守这些规定。' },
+      ],
+      questions: [
+        { question: '文章讲的是什么地方的规定？', options: ['大学图书馆', '健身房', '餐厅'], correctIndex: 0, explanation: '“la biblioteca de la universidad”。' },
+        { question: '在自习室里应该怎样？', options: ['保持安静', '大声讨论', '边吃边学'], correctIndex: 0, explanation: '“Es importante que guardes silencio”。' },
+        { question: '考试季最好怎么做？', options: ['提前订座', '带朋友来', '通宵学习'], correctIndex: 0, explanation: '“Es mejor que reserves un sitio”。' },
+      ],
+    },
   },
   {
     id: 'ojala',
@@ -72,6 +162,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「但愿如此！」？', options: ['¡Ojalá!', '¡Ojalá que sí!', 'Ambas correctas.'], correctIndex: 2 },
     speakPrompt: 'Ojalá pueda viajar pronto. Ojalá todo salga bien.',
     dictation: 'Ojalá que llueva esta noche.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：出发去加利西亚之前',
+      context: '出发旅行前的一连串愿望。留意 Ojalá + 虚拟式现在时表达对将来的强烈期望。',
+      sentences: [
+        { es: 'Mañana salgo de viaje a Galicia y estoy un poco nervioso.', zh: '明天我出发去加利西亚，有点紧张。' },
+        { es: 'Ojalá no haya mucho tráfico en la carretera.', zh: '但愿路上不太堵。' },
+        { es: 'Ojalá haga buen tiempo durante toda la semana.', zh: '但愿整周天气都好。' },
+        { es: 'He reservado un hotel barato; ojalá esté limpio.', zh: '我订了便宜旅馆；但愿干净。' },
+        { es: 'Ojalá pueda probar el pulpo y los mariscos de la zona.', zh: '但愿能尝到当地的章鱼和海鲜。' },
+        { es: 'Ojalá vuelva con muchas fotos bonitas.', zh: '但愿带很多美照回来。' },
+      ],
+      questions: [
+        { question: '作者明天要去哪里？', options: ['加利西亚', '安达卢西亚', '加那利群岛'], correctIndex: 0, explanation: '“viaje a Galicia”。' },
+        { question: '关于旅馆他希望什么？', options: ['干净', '便宜', '靠海'], correctIndex: 0, explanation: '“ojalá esté limpio”。' },
+        { question: '他想尝当地的什么？', options: ['章鱼和海鲜', '火腿和奶酪', '海鲜饭'], correctIndex: 0, explanation: '“el pulpo y los mariscos de la zona”。' },
+      ],
+    },
   },
   {
     id: 'cuando-subj',
@@ -84,6 +192,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「到家后我会打电话（还没到家）」？', options: ['Cuando llegue a casa, te llamaré.', 'Cuando llego a casa, te llamaré.'], correctIndex: 0 },
     speakPrompt: 'Cuando tengo tiempo, leo. Cuando termine, saldré.',
     dictation: 'Cuando seas mayor, entenderás.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：忙完这阵子就……',
+      context: '区分习惯（cuando + 直陈式）和将来未实现（cuando + 虚拟式）。',
+      sentences: [
+        { es: 'Normalmente, cuando llego a casa, preparo la cena.', zh: '通常我到家后就做晚饭。' },
+        { es: 'Pero esta semana estoy muy ocupada con un proyecto.', zh: '但这周我忙于一个项目。' },
+        { es: 'Cuando termine el proyecto, me tomaré unos días libres.', zh: '项目结束后，我会休几天假。' },
+        { es: 'Cuando tenga tiempo, quiero visitar a mi familia en Bilbao.', zh: '有时间时，我想去毕尔巴鄂看家人。' },
+        { es: 'Mi madre siempre dice: «Cuando vengas, te haré tu plato favorito».', zh: '我妈总说：「你来的时候，我给你做你最爱的菜。」' },
+        { es: 'Cuando sea mayor, me gustaría vivir cerca del mar.', zh: '等我老了，我想住在海边。' },
+      ],
+      questions: [
+        { question: '作者通常到家后做什么？', options: ['做晚饭', '看电视', '马上睡觉'], correctIndex: 0, explanation: '“cuando llego a casa, preparo la cena”（习惯，用直陈式）。' },
+        { question: '项目结束后她打算做什么？', options: ['休几天假', '换工作', '搬家'], correctIndex: 0, explanation: '“Cuando termine el proyecto, me tomaré unos días libres.”' },
+        { question: '她想去哪里看家人？', options: ['毕尔巴鄂', '马德里', '巴塞罗那'], correctIndex: 0, explanation: '“mi familia en Bilbao”。' },
+      ],
+    },
   },
   {
     id: 'aunque-subj',
@@ -96,6 +222,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「虽然下雨（确实在下），我出去」？', options: ['Aunque llueve, salgo.', 'Aunque llueva, salgo.'], correctIndex: 0 },
     speakPrompt: 'Aunque sea difícil, no me rindo. Aunque llueve, vamos al parque.',
     dictation: 'Aunque no tenga dinero, soy feliz.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：再难我也要学下去',
+      context: '一段关于坚持学西语的自述。比较 aunque + 直陈式（已知事实）与 aunque + 虚拟式（假设）。',
+      sentences: [
+        { es: 'Quiero aprender español aunque sea difícil.', zh: '即使难，我也想学西语。' },
+        { es: 'Aunque trabajo muchas horas, saco tiempo para estudiar.', zh: '虽然我工作很久，但还是抽时间学习。' },
+        { es: 'Aunque no tenga mucho dinero, este verano viajaré a España.', zh: '即使钱不多，今年夏天我也要去西班牙。' },
+        { es: 'Aunque llueva, iré a mi clase de conversación.', zh: '即使下雨，我也会去会话课。' },
+        { es: 'Mis amigos dicen que, aunque me cueste, lo conseguiré.', zh: '朋友们说即使很费力，我也会成功。' },
+        { es: 'Aunque cometo errores, cada día hablo mejor.', zh: '虽然我会犯错，但每天说得更好。' },
+      ],
+      questions: [
+        { question: '尽管困难，作者想做什么？', options: ['学西语', '换工作', '出国定居'], correctIndex: 0, explanation: '“Quiero aprender español aunque sea difícil.”' },
+        { question: '即使钱不多，他夏天打算？', options: ['去西班牙', '买新车', '在家休息'], correctIndex: 0, explanation: '“aunque no tenga mucho dinero, este verano viajaré a España”。' },
+        { question: '即使下雨他会做什么？', options: ['去会话课', '待在家', '取消计划'], correctIndex: 0, explanation: '“Aunque llueva, iré a mi clase de conversación.”' },
+      ],
+    },
   },
   {
     id: 'para-que',
@@ -108,6 +252,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我打电话让你不担心」？', options: ['Te llamo para que no te preocupes.', 'Te llamo para que no te preocupas.'], correctIndex: 0 },
     speakPrompt: 'Te lo explico para que lo entiendas. Salí sin que me vieran.',
     dictation: 'Antes de que anochezca, volvemos.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：给游客的城市小贴士',
+      context: '写给即将来访朋友的实用建议。留意 para que、antes de que、sin que + 虚拟式。',
+      sentences: [
+        { es: 'Te escribo esta guía para que no te pierdas en la ciudad.', zh: '我写这份指南，好让你在城里不迷路。' },
+        { es: 'Coge un plano del metro antes de que salgas del hotel.', zh: '出酒店前拿一张地铁图。' },
+        { es: 'Compra el billete por internet para que no hagas cola.', zh: '网上买票，省得排队。' },
+        { es: 'Sal temprano para que llegues con tiempo al museo.', zh: '早点出门，好让你早点到博物馆。' },
+        { es: 'Lleva siempre algo de agua, porque, sin que te des cuenta, hace calor.', zh: '随身带点水，因为不知不觉天就热了。' },
+        { es: 'Te lo cuento todo para que disfrutes del viaje.', zh: '我把这些都告诉你，好让你享受旅行。' },
+      ],
+      questions: [
+        { question: '这份指南的目的？', options: ['让你不迷路', '帮你订酒店', '替你买礼物'], correctIndex: 0, explanation: '“para que no te pierdas en la ciudad”。' },
+        { question: '为什么建议网上买票？', options: ['省得排队', '更便宜', '可以退票'], correctIndex: 0, explanation: '“para que no hagas cola”。' },
+        { question: '为什么建议早点出门？', options: ['好早点到博物馆', '躲避堵车', '赶早班车'], correctIndex: 0, explanation: '“para que llegues con tiempo al museo”。' },
+      ],
+    },
   },
   {
     id: 'subj-imperfect',
@@ -120,6 +282,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「如果我有时间（现在没有）」？', options: ['Si tuviera tiempo...', 'Si tengo tiempo...'], correctIndex: 0 },
     speakPrompt: 'Si pudiera, viviría en la playa. Me gustaría que me ayudaras.',
     dictation: 'Ojalá fuera verano todo el año.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：如果我有更多时间……',
+      context: '一系列与现在相反的假设。留意 si + 过去虚拟式 → 条件式，以及 ojalá + 过去虚拟式。',
+      sentences: [
+        { es: 'Si tuviera más tiempo libre, aprendería a tocar la guitarra.', zh: '如果有更多空闲，我会学吉他。' },
+        { es: 'Si viviera en España, practicaría español todos los días.', zh: '如果我住在西班牙，我会每天练西语。' },
+        { es: 'Mi amiga dijo que, si pudiera, se mudaría a Sevilla.', zh: '我朋友说，如果可以，她会搬到塞维利亚。' },
+        { es: 'Si fuéramos ricos, viajaríamos por toda Latinoamérica.', zh: '如果我们有钱，会游遍拉美。' },
+        { es: 'Ojalá tuviera el valor de cambiar de trabajo.', zh: '但愿我有勇气换工作。' },
+        { es: 'Si me lo pidieras, te ayudaría sin dudar.', zh: '如果你开口，我会毫不犹豫帮你。' },
+      ],
+      questions: [
+        { question: '如果有更多空闲，作者想学什么？', options: ['吉他', '钢琴', '游泳'], correctIndex: 0, explanation: '“aprendería a tocar la guitarra”。' },
+        { question: '朋友如果可以会搬到哪里？', options: ['塞维利亚', '马德里', '瓦伦西亚'], correctIndex: 0, explanation: '“se mudaría a Sevilla”。' },
+        { question: '如果有钱他们会做什么？', options: ['游遍拉美', '买房子', '开公司'], correctIndex: 0, explanation: '“viajaríamos por toda Latinoamérica”。' },
+      ],
+    },
   },
   {
     id: 'si-clauses',
@@ -132,6 +312,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「如果有时间我会学吉他」？', options: ['Si tuviera tiempo, aprendería guitarra.', 'Si tengo tiempo, aprendo guitarra.'], correctIndex: 0 },
     speakPrompt: 'Si gano la lotería, viajaré por el mundo. Si fuera rico, ayudaría a más gente.',
     dictation: 'Si hubieras venido, te habrías divertido.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：三种「如果」',
+      context: '同一段文字里出现真实条件、可能条件和不可能条件，体会三类 Si 句的区别。',
+      sentences: [
+        { es: 'Si mañana hace sol, iremos a la playa.', zh: '如果明天晴天，我们就去海滩。' },
+        { es: 'Si tuviera coche, no dependería del transporte público.', zh: '如果我有车，就不用依赖公共交通。' },
+        { es: 'Si hubiera estudiado más, habría aprobado el examen.', zh: '如果我多学些，本可以通过考试。' },
+        { es: 'Mi hermano siempre dice: «Si yo fuera tú, aceptaría el trabajo».', zh: '我哥总说：「如果我是你，我会接受这份工作。」' },
+        { es: 'Si llueve este fin de semana, nos quedaremos en casa.', zh: '如果这周末下雨，我们就待在家。' },
+        { es: 'Si pudiera volver atrás, tomaría las mismas decisiones.', zh: '如果能回到过去，我还会做同样的决定。' },
+      ],
+      questions: [
+        { question: '如果明天晴天，他们会做什么？', options: ['去海滩', '待在家', '去博物馆'], correctIndex: 0, explanation: '真实条件：“Si mañana hace sol, iremos a la playa.”' },
+        { question: '作者为什么没通过考试？', options: ['学得不够', '迟到了', '生病了'], correctIndex: 0, explanation: '不可能条件：“Si hubiera estudiado más, habría aprobado.”' },
+        { question: '哥哥的建议是？', options: ['接受那份工作', '拒绝那份工作', '再等等'], correctIndex: 0, explanation: '“Si yo fuera tú, aceptaría el trabajo.”' },
+      ],
+    },
   },
   {
     id: 'subj-perfect',
@@ -144,6 +342,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「很高兴你已经完成了」？', options: ['Me alegra que hayas terminado.', 'Me alegra que has terminado.'], correctIndex: 0 },
     speakPrompt: 'Es bueno que hayas practicado. Dudo que haya llegado ya.',
     dictation: 'Cuando hayas comido, salimos.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：恭喜你毕业了',
+      context: '对一系列已完成动作的反应。留意 me alegro de que、no creo que、espero que + haya/hayas + 过去分词。',
+      sentences: [
+        { es: 'Me alegro de que hayas terminado por fin tu carrera.', zh: '我很高兴你终于读完了大学。' },
+        { es: 'Es increíble que hayamos llegado tan lejos juntos.', zh: '我们一起走了这么远，真不可思议。' },
+        { es: 'Cuando hayas descansado, podemos hablar de tus planes.', zh: '等你休息好，我们可以聊聊你的计划。' },
+        { es: 'No creo que el profesor haya corregido los exámenes todavía.', zh: '我不觉得老师已经批改完试卷。' },
+        { es: 'Espero que no te hayas olvidado de la reunión de mañana.', zh: '希望你没忘记明天的会议。' },
+        { es: 'Es una pena que no hayas podido venir a la fiesta.', zh: '很遗憾你没能来派对。' },
+      ],
+      questions: [
+        { question: '作者为什么高兴？', options: ['对方读完了大学', '对方中了奖', '对方买了房'], correctIndex: 0, explanation: '“hayas terminado por fin tu carrera”。' },
+        { question: '关于试卷作者怎么认为？', options: ['老师可能还没批完', '老师已经批完', '不会有考试'], correctIndex: 0, explanation: '“No creo que el profesor haya corregido los exámenes todavía.”' },
+        { question: '作者提醒对方别忘了什么？', options: ['明天的会议', '生日派对', '交作业'], correctIndex: 0, explanation: '“no te hayas olvidado de la reunión de mañana”。' },
+      ],
+    },
   },
   {
     id: 'subj-pluperfect',
@@ -156,6 +372,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「要是我早知道就好了」？', options: ['Ojalá hubiera sabido.', 'Ojalá había sabido.'], correctIndex: 0 },
     speakPrompt: 'Si hubiera nacido en España, hablaría con otro acento. Ojalá hubieras estado allí.',
     dictation: 'Como si hubiera pasado ayer.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：当年要是……就好了',
+      context: '对过去的种种懊悔与假设。留意 si + hubiera/hubieras + 过去分词 → habría + 过去分词。',
+      sentences: [
+        { es: 'Si hubiera sabido que venías, te habría esperado.', zh: '如果我知道你要来，就会等你。' },
+        { es: 'Ojalá hubiéramos reservado las entradas antes.', zh: '但愿我们早点订了票。' },
+        { es: 'Si hubieras estudiado idiomas de joven, ahora hablarías cuatro.', zh: '如果你年轻时学语言，现在能说四门。' },
+        { es: 'Mi abuelo siempre decía que, si hubiera podido, habría viajado más.', zh: '我祖父总说，如果当年能够，他会多旅行。' },
+        { es: 'Si no hubiera perdido el tren, no habría conocido a Marta.', zh: '如果我没误火车，就不会认识 Marta。' },
+        { es: 'A veces pienso que ojalá hubiera empezado antes.', zh: '有时我想，要是早点开始就好了。' },
+      ],
+      questions: [
+        { question: '如果作者早知道对方来，会怎样？', options: ['会等他', '会取消计划', '会生气'], correctIndex: 0, explanation: '“te habría esperado”。' },
+        { question: '关于票他们后悔什么？', options: ['没早点订票', '票太贵', '买错场次'], correctIndex: 0, explanation: '“Ojalá hubiéramos reservado las entradas antes.”' },
+        { question: '误火车带来了什么意外结果？', options: ['认识了 Marta', '丢了工作', '迟到挨骂'], correctIndex: 0, explanation: '“no habría conocido a Marta”。' },
+      ],
+    },
   },
   {
     id: 'future-perfect',
@@ -168,6 +402,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「到周一我会做完」？', options: ['Para el lunes habré terminado.', 'Para el lunes terminaré.'], correctIndex: 0 },
     speakPrompt: 'Para el verano habré ahorrado suficiente dinero.',
     dictation: 'Cuando llegues, ya habré salido.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：到那时我已经……',
+      context: '对将来某个时间点之前已完成动作的预测。留意 habré / habremos / habrá + 过去分词。',
+      sentences: [
+        { es: 'Para finales de año, habré ahorrado bastante dinero.', zh: '到年底，我会存够不少钱。' },
+        { es: 'Cuando llegues a la oficina, ya habré enviado el informe.', zh: '你到办公室时，我已经把报告发出去了。' },
+        { es: 'Para el verano, habremos terminado las obras de la casa.', zh: '到夏天，我们会完成房子的施工。' },
+        { es: 'Supongo que el cartero ya habrá dejado el paquete.', zh: '我猜邮差应该已经把包裹放下了。' },
+        { es: 'Dentro de diez años, la tecnología habrá cambiado mucho.', zh: '十年后，科技会有很大变化。' },
+        { es: 'Para cuando te jubiles, habrás trabajado más de cuarenta años.', zh: '等你退休时，你会工作了四十多年。' },
+      ],
+      questions: [
+        { question: '到年底作者会怎样？', options: ['存够不少钱', '换新工作', '买新车'], correctIndex: 0, explanation: '“habré ahorrado bastante dinero”。' },
+        { question: '对方到办公室时作者会做完什么？', options: ['发出报告', '开完会', '下班回家'], correctIndex: 0, explanation: '“ya habré enviado el informe”。' },
+        { question: '到夏天他们会完成什么？', options: ['房子的施工', '一次旅行', '一本书'], correctIndex: 0, explanation: '“habremos terminado las obras de la casa”。' },
+      ],
+    },
   },
   {
     id: 'conditional-perfect',
@@ -180,6 +432,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「本可以来的（但没来）」？', options: ['Habría podido venir.', 'Podría haber venido.', 'Ambas son naturales.'], correctIndex: 2 },
     speakPrompt: 'Si me lo hubieras dicho, habría ayudado. Deberías haber estudiado más.',
     dictation: 'No habría pasado si hubieras avisado.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：本来可以……但是',
+      context: '对过去假设结果的表达。留意 habría + 过去分词，常与「但事实是……」连用。',
+      sentences: [
+        { es: 'Habría ido a tu cumpleaños, pero estaba enfermo.', zh: '我本想去你的生日会，但我病了。' },
+        { es: 'Con un poco más de tiempo, habríamos visitado más ciudades.', zh: '再多点时间，我们本会去更多城市。' },
+        { es: 'Ella dijo que habría preferido quedarse en casa.', zh: '她说她本来更想待在家。' },
+        { es: 'Yo, en tu lugar, no habría dicho nada.', zh: '换作我，我什么都不会说。' },
+        { es: 'Habrían llegado antes, pero había mucho tráfico.', zh: '他们本会早到，但路上很堵。' },
+        { es: 'Deberías habérmelo contado; te habría ayudado.', zh: '你该告诉我的，我本会帮你。' },
+      ],
+      questions: [
+        { question: '作者为什么没去生日会？', options: ['生病了', '忘了', '没收到邀请'], correctIndex: 0, explanation: '“pero estaba enfermo”。' },
+        { question: '她本来更想做什么？', options: ['待在家', '出去玩', '加班'], correctIndex: 0, explanation: '“habría preferido quedarse en casa”。' },
+        { question: '他们为什么没早到？', options: ['路上堵车', '睡过头', '迷路'], correctIndex: 0, explanation: '“había mucho tráfico”。' },
+      ],
+    },
   },
   {
     id: 'reported-speech',
@@ -192,6 +462,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '转述「Estoy cansado」？', options: ['Dijo que estaba cansado.', 'Dijo que está cansado.'], correctIndex: 0 },
     speakPrompt: 'Mi amigo me dijo que vendría mañana. La profesora dijo que el examen era difícil.',
     dictation: 'Me preguntó dónde vivía.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：邻居告诉我的事',
+      context: '把一段对话转述出来。留意时态后移：dijo que estaba / se mudaría / había aprobado，以及 me pidió que + 过去虚拟式。',
+      sentences: [
+        { es: 'Ayer hablé con mi vecina y me contó muchas cosas.', zh: '昨天我和邻居聊天，她告诉我很多事。' },
+        { es: 'Me dijo que estaba muy contenta con su nuevo trabajo.', zh: '她说她对新工作很满意。' },
+        { es: 'Comentó que se mudaría a otro barrio el mes siguiente.', zh: '她说下个月会搬到别的街区。' },
+        { es: 'Me preguntó si yo conocía a alguien que buscara piso.', zh: '她问我是否认识在找房子的人。' },
+        { es: 'Añadió que su hijo había aprobado todos los exámenes.', zh: '她还说她儿子通过了所有考试。' },
+        { es: 'Al final me pidió que la visitara pronto.', zh: '最后她请我尽快去看她。' },
+      ],
+      questions: [
+        { question: '邻居对新工作感觉如何？', options: ['很满意', '很失望', '想辞职'], correctIndex: 0, explanation: '“estaba muy contenta con su nuevo trabajo”。' },
+        { question: '邻居下个月打算做什么？', options: ['搬到别的街区', '出国旅行', '换工作'], correctIndex: 0, explanation: '“se mudaría a otro barrio el mes siguiente”。' },
+        { question: '邻居最后请作者做什么？', options: ['尽快去看她', '帮她搬家', '借她钱'], correctIndex: 0, explanation: '“me pidió que la visitara pronto”。' },
+      ],
+    },
   },
   {
     id: 'relative-subj',
@@ -204,6 +492,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我在找有阳台的公寓（还没有）」？', options: ['Busco un piso que tenga balcón.', 'Busco un piso que tiene balcón.'], correctIndex: 0 },
     speakPrompt: 'Necesito a alguien que hable japonés. No hay nadie que sepa la respuesta.',
     dictation: '¿Hay alguien que quiera venir?',
+    reading: {
+      format: 'article',
+      title: '阅读短文：找房子、找室友',
+      context: '先行词不确定或不存在时用虚拟式；已知存在时用直陈式。',
+      sentences: [
+        { es: 'Busco un piso que tenga dos habitaciones y mucha luz.', zh: '我在找一套有两间卧室、采光好的公寓。' },
+        { es: 'Necesito un compañero de piso que sea limpio y tranquilo.', zh: '我需要一个爱干净又安静的室友。' },
+        { es: '¿Conoces a alguien que pueda ayudarme con la mudanza?', zh: '你认识能帮我搬家的人吗？' },
+        { es: 'Quiero encontrar un trabajo que esté cerca de casa.', zh: '我想找一份离家近的工作。' },
+        { es: 'No hay nada en esta tienda que me guste.', zh: '这家店里没有我喜欢的东西。' },
+        { es: 'Al final encontré un piso que tenía todo lo que buscaba.', zh: '最后我找到了一套满足我所有要求的公寓。' },
+      ],
+      questions: [
+        { question: '作者在找什么样的公寓？', options: ['两间卧室、采光好', '市中心的豪宅', '带花园的别墅'], correctIndex: 0, explanation: '“que tenga dos habitaciones y mucha luz”。' },
+        { question: '他想要什么样的室友？', options: ['爱干净又安静', '会做饭', '懂西语'], correctIndex: 0, explanation: '“que sea limpio y tranquilo”。' },
+        { question: '结果如何？', options: ['找到了满足要求的公寓', '一直没找到', '决定不搬了'], correctIndex: 0, explanation: '“encontré un piso que tenía todo lo que buscaba”（已存在，用直陈式 tenía）。' },
+      ],
+    },
   },
   {
     id: 'formal-commands',
@@ -216,6 +522,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「请坐（正式）」？', options: ['Siéntese.', 'Siéntate.', 'Sentarse.'], correctIndex: 0 },
     speakPrompt: 'Por favor, espere un momento. No se preocupe. Venga usted mañana.',
     dictation: 'Hable con el director.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：银行卡激活说明（正式）',
+      context: '一段面向顾客的正式说明，使用 usted 命令式。留意 siga、introduzca、no comparta、llame、acuda。',
+      sentences: [
+        { es: 'Estimado cliente, siga estas instrucciones para activar su tarjeta.', zh: '尊敬的顾客，请按以下步骤激活您的银行卡。' },
+        { es: 'Introduzca la tarjeta en el cajero y marque su código.', zh: '把卡插入取款机并输入密码。' },
+        { es: 'Por favor, no comparta su clave con nadie.', zh: '请不要把密码告诉任何人。' },
+        { es: 'Si tiene algún problema, llame a nuestro teléfono de atención.', zh: '如有问题，请拨打我们的客服电话。' },
+        { es: 'Acuda a su oficina con su DNI si desea más información.', zh: '如需更多信息，请携带身份证前往营业厅。' },
+        { es: 'Gracias por confiar en nuestro banco.', zh: '感谢您信任本银行。' },
+      ],
+      questions: [
+        { question: '这段说明的目的？', options: ['激活银行卡', '申请贷款', '挂失银行卡'], correctIndex: 0, explanation: '“para activar su tarjeta”。' },
+        { question: '关于密码顾客应注意什么？', options: ['不要告诉任何人', '写在卡背面', '定期更换'], correctIndex: 0, explanation: '“no comparta su clave con nadie”。' },
+        { question: '想要更多信息要带什么？', options: ['身份证（DNI）', '银行卡', '护照'], correctIndex: 0, explanation: '“Acuda a su oficina con su DNI”。' },
+      ],
+    },
   },
   {
     id: 'verbs-change',
@@ -228,6 +552,24 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「他当医生了（成为）」？', options: ['Se hizo médico.', 'Se puso médico.', 'Se volvió médico.'], correctIndex: 0 },
     speakPrompt: 'De niño era tímido pero se volvió más extrovertido. Se hizo rico con su negocio.',
     dictation: 'Se quedó sorprendido.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：叔叔的人生变化',
+      context: '一段人物小传，集中使用变化动词。留意 hacerse（主动成为）、volverse（性格改变）、ponerse（一时状态）、quedarse（停留/陷入某状态）。',
+      sentences: [
+        { es: 'Cuando era joven, mi tío se hizo médico después de mucho esfuerzo.', zh: '年轻时，我叔叔经过努力当上了医生。' },
+        { es: 'Con los años, se volvió una persona más tranquila.', zh: '多年后，他变成了更平静的人。' },
+        { es: 'El día de su boda se puso muy nervioso.', zh: '婚礼那天他变得很紧张。' },
+        { es: 'Cuando murió su perro, se quedó muy triste durante semanas.', zh: '他的狗去世时，他难过了好几周。' },
+        { es: 'Después de ganar el premio, se hizo bastante famoso en su pueblo.', zh: '获奖后，他在镇上变得相当有名。' },
+        { es: 'Hoy, ya jubilado, se ha vuelto aún más amable.', zh: '如今退休了，他变得更和善了。' },
+      ],
+      questions: [
+        { question: '叔叔年轻时成为了什么？', options: ['医生', '律师', '老师'], correctIndex: 0, explanation: '“se hizo médico”。' },
+        { question: '婚礼那天他怎么了？', options: ['很紧张', '很开心', '迟到了'], correctIndex: 0, explanation: '“se puso muy nervioso”。' },
+        { question: '退休后他变得怎样？', options: ['更和善', '更孤僻', '更忙碌'], correctIndex: 0, explanation: '“se ha vuelto aún más amable”。' },
+      ],
+    },
   },
   {
     id: 'b1-review',
@@ -240,5 +582,23 @@ export const B1_TOPICS: GrammarTopic[] = [
     quiz: { question: 'B1 综合：「虽然可能下雨，我会去」？', options: ['Aunque pueda llover, iré.', 'Aunque puede llover, iré.'], correctIndex: 0 },
     speakPrompt: 'Quiero que sepas que, si tuviera más tiempo, habría estudiado más. Es importante que practiques todos los días.',
     practiceItems: ['5 分钟含 subjuntivo 的演讲', '转述 3 句朋友的话', '写 5 个 Si 条件句'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：我的西语学习之路',
+      context: 'B1 综合短文，串联虚拟式、Si 条件句、cuando+虚拟式、aunque 等结构。',
+      sentences: [
+        { es: 'Cuando empecé a estudiar español, no creía que llegara tan lejos.', zh: '刚开始学西语时，我没想到能走这么远。' },
+        { es: 'Mi profesora siempre me pedía que practicara sin miedo a equivocarme.', zh: '老师总让我大胆练习，别怕犯错。' },
+        { es: 'Si hubiera sabido lo útil que es, habría empezado mucho antes.', zh: '早知道这么有用，我会更早开始。' },
+        { es: 'Ahora, aunque cometo errores, me alegra que la gente me entienda.', zh: '现在尽管会犯错，我很高兴别人能听懂我。' },
+        { es: 'Espero que algún día pueda vivir una temporada en España.', zh: '希望有一天我能在西班牙住一段时间。' },
+        { es: 'Cuando consiga el nivel B2, lo celebraré con mis compañeros de clase.', zh: '等我达到 B2，我会和同学们庆祝。' },
+      ],
+      questions: [
+        { question: '刚学西语时作者怎么想？', options: ['没想到能走这么远', '觉得很简单', '想很快放弃'], correctIndex: 0, explanation: '“no creía que llegara tan lejos”。' },
+        { question: '老师的建议是？', options: ['大胆练习、别怕犯错', '只背单词', '别开口说'], correctIndex: 0, explanation: '“que practicara sin miedo a equivocarme”。' },
+        { question: '达到 B2 后作者打算做什么？', options: ['和同学庆祝', '停止学习', '换语言'], correctIndex: 0, explanation: '“lo celebraré con mis compañeros de clase”。' },
+      ],
+    },
   },
 ];

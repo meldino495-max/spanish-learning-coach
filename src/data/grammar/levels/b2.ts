@@ -12,6 +12,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「一到我就打电话」？', options: ['Te llamo en cuanto llegue.', 'Te llamo en cuanto llego.'], correctIndex: 0 },
     speakPrompt: 'No saldré hasta que deje de llover. Con tal de que estudies, aprobarás.',
     dictation: 'A menos que sea urgente, espera.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：组织一次集体郊游',
+      context: '一段带条件的计划。留意 en cuanto、hasta que、con tal de que、a menos que、sin que、siempre que + 虚拟式。',
+      sentences: [
+        { es: 'Hemos quedado en organizar una excursión en cuanto termine el periodo de exámenes.', zh: '我们约好考试季一结束就组织一次郊游。' },
+        { es: 'No reservaremos el autobús hasta que sepamos cuántos somos.', zh: '在确定人数前，我们不订大巴。' },
+        { es: 'Iremos a la montaña con tal de que el tiempo lo permita.', zh: '只要天气允许，我们就去山里。' },
+        { es: 'A menos que llueva mucho, saldremos a las ocho de la mañana.', zh: '除非下大雨，否则我们早八点出发。' },
+        { es: 'Llevaremos comida para todos sin que nadie tenga que cocinar.', zh: '我们给大家备好食物，谁都不用做饭。' },
+        { es: 'Lo pasaremos bien siempre que colaboremos un poco.', zh: '只要大家稍微配合，我们就会玩得开心。' },
+      ],
+      questions: [
+        { question: '什么时候组织郊游？', options: ['考试季结束后', '马上', '暑假末'], correctIndex: 0, explanation: '“en cuanto termine el periodo de exámenes”。' },
+        { question: '什么情况下会改变早八出发的计划？', options: ['下大雨', '人太多', '没人报名'], correctIndex: 0, explanation: '“A menos que llueva mucho”。' },
+        { question: '关于食物如何安排？', options: ['给大家备好，谁都不用做饭', '各自带各自的', '到山上买'], correctIndex: 0, explanation: '“sin que nadie tenga que cocinar”。' },
+      ],
+    },
   },
   {
     id: 'subj-nuance',
@@ -24,6 +42,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我有一辆很省油的车（已有）」？', options: ['Tengo un coche que consume poco.', 'Tengo un coche que consuma poco.'], correctIndex: 0 },
     speakPrompt: 'Busco un profesor que explique bien. Conozco a alguien que habla árabe.',
     dictation: 'No creo que sea tan complicado.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：公司在招人',
+      context: '体会同一类从句中直陈式（已知/存在）与虚拟式（未确定/在找）的语义差。',
+      sentences: [
+        { es: 'En mi empresa buscamos a una persona que hable tres idiomas.', zh: '我们公司在找一个会三门语言的人。' },
+        { es: 'Ya tenemos un empleado que habla inglés y francés.', zh: '我们已经有一名会英语和法语的员工。' },
+        { es: 'No creo que sea fácil encontrar ese perfil.', zh: '我不觉得找到这种人才容易。' },
+        { es: 'Cuando lleguen los currículums, los revisaremos con calma.', zh: '简历到了之后，我们会慢慢审。' },
+        { es: 'Aunque pidamos mucho, ofrecemos un buen sueldo.', zh: '虽然我们要求高，但我们提供不错的薪水。' },
+        { es: 'Estoy seguro de que alguien que reúna esos requisitos existe.', zh: '我确信有符合条件的人存在。' },
+      ],
+      questions: [
+        { question: '公司在找什么样的人？', options: ['会三门语言', '有十年经验', '住在本市'], correctIndex: 0, explanation: '“que hable tres idiomas”（未确定，用虚拟式）。' },
+        { question: '公司已有的员工会什么语言？', options: ['英语和法语', '德语和中文', '只会英语'], correctIndex: 0, explanation: '“que habla inglés y francés”（已存在，用直陈式）。' },
+        { question: '作者对找到合适人才怎么看？', options: ['不容易', '很容易', '不可能'], correctIndex: 0, explanation: '“No creo que sea fácil encontrar ese perfil.”' },
+      ],
+    },
   },
   {
     id: 'passive-se',
@@ -36,6 +72,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我忘了（意外）」？', options: ['Se me olvidó.', 'Me olvidé.', 'Olvidé me.'], correctIndex: 0 },
     speakPrompt: 'Se me cayó el móvil. Se venden entradas aquí. Se construyeron en 2000.',
     dictation: 'Se me acabó la paciencia.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：倒霉的一天',
+      context: '集中练习意外 se（se me cayó / se me olvidó / se me rompió）和被动 se（se venden）。',
+      sentences: [
+        { es: 'Ayer tuve un día terrible y todo me salió mal.', zh: '昨天我过得很糟，一切都不顺。' },
+        { es: 'Por la mañana se me cayó el café sobre el ordenador.', zh: '早上我把咖啡洒在了电脑上。' },
+        { es: 'Luego se me olvidaron las llaves dentro de casa.', zh: '然后我把钥匙忘在了家里。' },
+        { es: 'En la oficina se me rompió una taza sin querer.', zh: '在办公室我不小心打碎了一个杯子。' },
+        { es: 'Por la tarde vi que en una tienda se venden paraguas y compré uno.', zh: '下午我看到一家店在卖伞，就买了一把。' },
+        { es: 'Al final se me acabó la paciencia y me fui a casa pronto.', zh: '最后我耐心用尽，早早回了家。' },
+      ],
+      questions: [
+        { question: '早上发生了什么意外？', options: ['咖啡洒在电脑上', '摔了一跤', '丢了手机'], correctIndex: 0, explanation: '“se me cayó el café sobre el ordenador”。' },
+        { question: '他在办公室不小心做了什么？', options: ['打碎了杯子', '迟到了', '删了文件'], correctIndex: 0, explanation: '“se me rompió una taza sin querer”。' },
+        { question: '他最后怎么了？', options: ['耐心用尽，早早回家', '受到表扬', '加班到很晚'], correctIndex: 0, explanation: '“se me acabó la paciencia y me fui a casa pronto”。' },
+      ],
+    },
   },
   {
     id: 'periphrasis-adv',
@@ -48,6 +102,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我学西语三年了（持续）」？', options: ['Llevo tres años estudiando español.', 'Estudio español tres años.'], correctIndex: 0 },
     speakPrompt: 'Dejé de comer carne. Llevo meses pensando en mudarme.',
     dictation: 'Llegó a ser director de la empresa.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：我的近况',
+      context: '集中使用高级动词短语：llevar + 现在分词、dejar de、llegar a、andar + 现在分词、seguir + 现在分词、acabar de。',
+      sentences: [
+        { es: 'Llevo cinco años trabajando en la misma empresa.', zh: '我在同一家公司工作五年了。' },
+        { es: 'Hace poco dejé de fumar y me siento mucho mejor.', zh: '不久前我戒了烟，感觉好多了。' },
+        { es: 'Con esfuerzo, llegué a ser responsable de mi equipo.', zh: '通过努力，我成了团队负责人。' },
+        { es: 'Últimamente ando buscando un piso más cerca del trabajo.', zh: '最近我一直在找离公司更近的房子。' },
+        { es: 'Sigo estudiando inglés por las noches para mejorar.', zh: '我仍在晚上学英语以求进步。' },
+        { es: 'Acabo de empezar un curso de gestión de proyectos.', zh: '我刚开始一门项目管理课程。' },
+      ],
+      questions: [
+        { question: '作者在这家公司工作多久了？', options: ['五年', '一年', '十年'], correctIndex: 0, explanation: '“Llevo cinco años trabajando”。' },
+        { question: '他不久前做了什么改变？', options: ['戒烟', '搬家', '换工作'], correctIndex: 0, explanation: '“dejé de fumar”。' },
+        { question: '他最近在找什么？', options: ['离公司更近的房子', '新工作', '语言伙伴'], correctIndex: 0, explanation: '“ando buscando un piso más cerca del trabajo”。' },
+      ],
+    },
   },
   {
     id: 'connectors',
@@ -60,6 +132,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「因此」？', options: ['Por consiguiente', 'Sin embargo', 'Aunque'], correctIndex: 0 },
     speakPrompt: 'En primer lugar, es importante. Además, es económico. Por consiguiente, lo recomiendo.',
     dictation: 'No obstante, hay que tener cuidado.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：关于远程办公（议论文）',
+      context: '一篇 DELE B2 风格的小议论文，集中使用书面连接词。',
+      sentences: [
+        { es: 'El teletrabajo se ha extendido mucho en los últimos años.', zh: '近年来远程办公大为普及。' },
+        { es: 'En primer lugar, permite ahorrar tiempo de desplazamiento.', zh: '首先，它能节省通勤时间。' },
+        { es: 'Además, ofrece más flexibilidad para conciliar la vida familiar.', zh: '此外，它提供更多弹性以平衡家庭生活。' },
+        { es: 'Sin embargo, puede provocar aislamiento y falta de comunicación.', zh: '然而，它可能导致孤立和沟通不足。' },
+        { es: 'Por otro lado, no todas las profesiones pueden hacerlo.', zh: '另一方面，并非所有职业都能这样做。' },
+        { es: 'En conclusión, el teletrabajo tiene ventajas e inconvenientes.', zh: '总之，远程办公有利也有弊。' },
+      ],
+      questions: [
+        { question: '文章讨论什么主题？', options: ['远程办公', '环境保护', '旅游业'], correctIndex: 0, explanation: '“El teletrabajo”。' },
+        { question: '远程办公的一个优点？', options: ['节省通勤时间', '工资更高', '同事更多'], correctIndex: 0, explanation: '“permite ahorrar tiempo de desplazamiento”。' },
+        { question: '文章提到的一个缺点？', options: ['孤立、沟通不足', '通勤太远', '没有电脑'], correctIndex: 0, explanation: '“puede provocar aislamiento y falta de comunicación”。' },
+      ],
+    },
   },
   {
     id: 'register',
@@ -72,6 +162,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '对老板应？', options: ['¿Podría revisar esto?', '¿Puedes revisar esto?'], correctIndex: 0 },
     speakPrompt: 'Buenos días, le agradezco su tiempo. Estimado señor, le escribo para...',
     dictation: 'Quisiera hacer una reserva.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：同一件事，两种说法',
+      context: '比较正式与非正式语域。留意对同事和对老板用词的差别。',
+      sentences: [
+        { es: 'Imagina que necesitas pedir un día libre en el trabajo.', zh: '想象你需要在公司请一天假。' },
+        { es: 'A un compañero le escribirías: «Oye, ¿me cubres mañana?».', zh: '给同事你会写：「喂，明天帮我顶一下？」' },
+        { es: 'A tu jefe, en cambio, le dirías: «¿Sería posible solicitar el día libre?».', zh: '而给老板，你会说：「请问能否申请那天休假？」' },
+        { es: 'En un correo formal se usan «Estimado/a» y «Le saluda atentamente».', zh: '正式邮件里用「尊敬的」和「此致敬礼」。' },
+        { es: 'En cambio, con los amigos usamos «hola», emojis y frases cortas.', zh: '而和朋友则用「嗨」、表情和短句。' },
+        { es: 'Saber cambiar de registro es una señal de buen nivel.', zh: '懂得切换语域是水平好的标志。' },
+      ],
+      questions: [
+        { question: '文章在比较什么？', options: ['正式与非正式表达', '过去时与现在时', '西语与英语'], correctIndex: 0, explanation: '“pedir un día libre”用两种语域表达。' },
+        { question: '对老板该怎么请假？', options: ['用礼貌的「¿Sería posible...?」', '用「Oye, ¿me cubres?」', '直接不来'], correctIndex: 0, explanation: '正式语域：“¿Sería posible solicitar el día libre?”' },
+        { question: '懂得切换语域说明什么？', options: ['语言水平好', '不够礼貌', '词汇量小'], correctIndex: 0, explanation: '“es una señal de buen nivel”。' },
+      ],
+    },
   },
   {
     id: 'idioms-1',
@@ -84,6 +192,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我想去旅行」地道？', options: ['Tengo ganas de viajar.', 'Quiero viajar mucho.'], correctIndex: 0 },
     speakPrompt: 'Echo de menos a mi familia. Hay que ponerse las pilas y estudiar.',
     dictation: 'Me da igual lo que piensen.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：好久不见的消息',
+      context: '一条充满地道习语的留言。留意 tener ganas de、estar hecho polvo、echar de menos、dar igual、ponerse las pilas、ir al grano。',
+      sentences: [
+        { es: '¡Cuánto tiempo! Tengo muchas ganas de verte.', zh: '好久不见！我很想见你。' },
+        { es: 'Estos días estoy hecho polvo por culpa del trabajo.', zh: '这几天因为工作我累坏了。' },
+        { es: 'La verdad es que echo de menos nuestras cenas de los viernes.', zh: '说真的，我很想念我们周五的晚餐。' },
+        { es: 'Si quieres, quedamos el sábado; me da igual la hora.', zh: '你愿意的话周六见，时间我无所谓。' },
+        { es: 'Tenemos que ponernos las pilas y organizar el viaje de una vez.', zh: '我们得加把劲，赶紧把旅行安排好。' },
+        { es: 'Vamos al grano: ¿te viene bien este finde?', zh: '直说吧：这周末你方便吗？' },
+      ],
+      questions: [
+        { question: '作者这几天为什么很累？', options: ['因为工作', '因为生病', '因为旅行'], correctIndex: 0, explanation: '“estoy hecho polvo por culpa del trabajo”。' },
+        { question: '作者想念什么？', options: ['周五的晚餐', '老同事', '故乡'], correctIndex: 0, explanation: '“echo de menos nuestras cenas de los viernes”。' },
+        { question: '关于见面时间作者的态度？', options: ['无所谓', '只能晚上', '必须周日'], correctIndex: 0, explanation: '“me da igual la hora”。' },
+      ],
+    },
   },
   {
     id: 'ser-estar-adv',
@@ -96,6 +222,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我准备好了」？', options: ['Estoy listo.', 'Soy listo.'], correctIndex: 0 },
     speakPrompt: 'Es aburrido hablar solo de trabajo. Estoy aburrido en casa.',
     dictation: 'La comida está fría pero es buena.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：在新餐厅吃饭',
+      context: '辨析 ser/estar 的高级用法：位置用 estar、特征/定性用 ser、暂时状态用 estar（está fría、es listo、estábamos llenos）。',
+      sentences: [
+        { es: 'Ayer fuimos a un restaurante nuevo que está en el centro.', zh: '昨天我们去了市中心一家新餐厅。' },
+        { es: 'El camarero era muy simpático, aunque parecía nuevo.', zh: '服务员很友好，虽然看起来是新来的。' },
+        { es: 'La sopa estaba un poco fría, pero el segundo plato estaba buenísimo.', zh: '汤有点凉，但第二道菜非常好吃。' },
+        { es: 'Mi amigo es muy listo y siempre elige bien el vino.', zh: '我朋友很聪明，总能选到好酒。' },
+        { es: 'Cuando llegó el postre, ya estábamos llenos.', zh: '甜点上来时，我们已经饱了。' },
+        { es: 'Fue una cena estupenda y el sitio es ideal para repetir.', zh: '那是一顿很棒的晚餐，那地方值得再来。' },
+      ],
+      questions: [
+        { question: '餐厅在哪里？', options: ['市中心', '郊区', '海边'], correctIndex: 0, explanation: '“está en el centro”（位置用 estar）。' },
+        { question: '汤怎么样？', options: ['有点凉', '太咸', '很烫'], correctIndex: 0, explanation: '“La sopa estaba un poco fría”（暂时状态用 estar）。' },
+        { question: '朋友总能做好什么？', options: ['选酒', '点菜', '结账'], correctIndex: 0, explanation: '“es muy listo y siempre elige bien el vino”。' },
+      ],
+    },
   },
   {
     id: 'lo-adjective',
@@ -108,6 +252,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「重要的是努力」？', options: ['Lo importante es esforzarse.', 'La importante es esforzarse.'], correctIndex: 0 },
     speakPrompt: 'Lo difícil del español es el subjuntivo. Lo que quiero es descansar.',
     dictation: 'Lo de la reunión quedó cancelado.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：学语言的心得',
+      context: '集中使用 lo + 形容词、lo que、lo de 的抽象名词化结构。',
+      sentences: [
+        { es: 'Lo más difícil de aprender un idioma es mantener la constancia.', zh: '学语言最难的是保持坚持。' },
+        { es: 'Lo bueno es que hoy hay muchos recursos gratuitos.', zh: '好处是如今有很多免费资源。' },
+        { es: 'Lo que más me gusta es ver series en versión original.', zh: '我最喜欢的是看原声剧集。' },
+        { es: 'Lo de estudiar a última hora nunca funciona conmigo.', zh: '临时抱佛脚那一套对我从来不管用。' },
+        { es: 'Lo importante no es la rapidez, sino la regularidad.', zh: '重要的不是速度，而是规律。' },
+        { es: 'Al final, lo que cuenta es disfrutar del proceso.', zh: '最终，重要的是享受过程。' },
+      ],
+      questions: [
+        { question: '学语言最难的是什么？', options: ['保持坚持', '记单词', '发音'], correctIndex: 0, explanation: '“Lo más difícil... es mantener la constancia.”' },
+        { question: '作者最喜欢做什么？', options: ['看原声剧集', '做语法题', '背课文'], correctIndex: 0, explanation: '“Lo que más me gusta es ver series en versión original.”' },
+        { question: '作者认为重要的是什么？', options: ['规律，而非速度', '速度', '天赋'], correctIndex: 0, explanation: '“Lo importante no es la rapidez, sino la regularidad.”' },
+      ],
+    },
   },
   {
     id: 'nominalization',
@@ -120,6 +282,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「问题的解決」？', options: ['La resolución del problema.', 'El resolver del problema.'], correctIndex: 0 },
     speakPrompt: 'La globalización afecta la economía. La participación es obligatoria.',
     dictation: 'La libertad de expresión es fundamental.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：教育的重要性',
+      context: '一段偏书面的文字，集中使用名词化（-ción、-dad、-miento）让表达更正式。',
+      sentences: [
+        { es: 'La educación es uno de los pilares de cualquier sociedad.', zh: '教育是任何社会的支柱之一。' },
+        { es: 'La participación de las familias mejora el rendimiento escolar.', zh: '家庭的参与能提高学业成绩。' },
+        { es: 'El crecimiento de la tecnología ha cambiado la enseñanza.', zh: '科技的发展改变了教学。' },
+        { es: 'La formación continua es necesaria en el mundo laboral actual.', zh: '在当今职场，持续培训是必要的。' },
+        { es: 'La reducción del abandono escolar es un objetivo prioritario.', zh: '降低辍学率是首要目标。' },
+        { es: 'En definitiva, la inversión en educación beneficia a todos.', zh: '总之，对教育的投资惠及所有人。' },
+      ],
+      questions: [
+        { question: '文章认为什么是社会支柱之一？', options: ['教育', '经济', '科技'], correctIndex: 0, explanation: '“La educación es uno de los pilares”。' },
+        { question: '什么能提高学业成绩？', options: ['家庭的参与', '更多考试', '更长学时'], correctIndex: 0, explanation: '“La participación de las familias”。' },
+        { question: '当今职场需要什么？', options: ['持续培训', '更高学历', '更多假期'], correctIndex: 0, explanation: '“La formación continua es necesaria”。' },
+      ],
+    },
   },
   {
     id: 'false-friends',
@@ -132,6 +312,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「She is embarrassed」误译？', options: ['Está embarazada（错，=怀孕）', 'Está avergonzada（对）', '选项2正确'], correctIndex: 2 },
     speakPrompt: 'Asistí a la conferencia. Es una persona muy sensible.',
     dictation: 'Finalmente realicé mi proyecto.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：假朋友词闹的笑话',
+      context: '一个关于「假朋友词」的小故事。留意 embarazada≠embarrassed、actual=现在的、realizar=意识到/实现、asistir=出席。',
+      sentences: [
+        { es: 'Mi amiga inglesa quiso decir que estaba avergonzada y dijo «embarazada».', zh: '我的英国朋友想说她很尴尬，却说成了「怀孕」。' },
+        { es: 'Todos nos reímos, porque «embarazada» significa otra cosa.', zh: '大家都笑了，因为「embarazada」是另一个意思。' },
+        { es: 'También confundió «actual» con «real»: «actual» significa «de ahora».', zh: '她还把「actual」和「real」搞混：「actual」意为「现在的」。' },
+        { es: 'Cuando se dio cuenta de su error, lo apuntó en su cuaderno.', zh: '当她意识到错误时，把它记在了本子上。' },
+        { es: 'Aprendió que «asistir» no es «assist», sino «acudir» a un sitio.', zh: '她明白了「asistir」不是「帮忙」，而是「出席」。' },
+        { es: 'Desde entonces, tiene mucho cuidado con los falsos amigos.', zh: '从那以后，她对假朋友词很小心。' },
+      ],
+      questions: [
+        { question: '英国朋友本想表达什么？', options: ['尴尬', '怀孕', '生气'], correctIndex: 0, explanation: '她想说 avergonzada（尴尬），却说成 embarazada（怀孕）。' },
+        { question: '「actual」在西语里是什么意思？', options: ['现在的', '真实的', '实际的'], correctIndex: 0, explanation: '“«actual» significa «de ahora»”。' },
+        { question: '「asistir」的意思是？', options: ['出席/到场', '帮忙', '协助'], correctIndex: 0, explanation: '“«asistir»... «acudir» a un sitio”。' },
+      ],
+    },
   },
   {
     id: 'preterite-anterior',
@@ -144,6 +342,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '现代口语「刚到就…」更常用？', options: ['Apenas había llegado...', 'Apenas hubo llegado...', 'Ambas en literatura, primera en oral.'], correctIndex: 2 },
     speakPrompt: '（阅读识别即可）Apenas había dicho eso, se fue.',
     dictation: 'En cuanto hubo oído la noticia, llamó.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：小说里的一种旧时态',
+      context: '介绍只在文学/书面中出现的「先过去时」（pretérito anterior），目标是阅读时认得它，而非主动使用。',
+      sentences: [
+        { es: 'En las novelas antiguas aparece a veces una forma poco común.', zh: '在旧小说里有时会出现一种不常见的时态。' },
+        { es: '«Apenas hubo terminado de hablar, todos se levantaron.»', zh: '「他刚一说完，所有人就站了起来。」' },
+        { es: 'Esta forma se llama pretérito anterior y hoy casi no se usa.', zh: '这种形式叫「先过去时」，如今几乎不再使用。' },
+        { es: 'En el lenguaje oral decimos «en cuanto terminó» o «cuando había terminado».', zh: '口语中我们说「他一结束」或「他已经结束时」。' },
+        { es: 'Aun así, conviene reconocerla al leer textos clásicos.', zh: '即便如此，阅读古典文本时认得它还是有用的。' },
+        { es: 'No hace falta usarla, solo entenderla.', zh: '不必使用它，只需理解。' },
+      ],
+      questions: [
+        { question: '这种时态叫什么？', options: ['先过去时（pretérito anterior）', '现在完成时', '过去完成时'], correctIndex: 0, explanation: '“se llama pretérito anterior”。' },
+        { question: '它如今的使用情况？', options: ['几乎不再使用', '口语常用', '只在新闻里用'], correctIndex: 0, explanation: '“hoy casi no se usa”。' },
+        { question: '对它我们应该怎样？', options: ['认得即可，不必使用', '必须熟练使用', '完全忽略'], correctIndex: 0, explanation: '“No hace falta usarla, solo entenderla.”' },
+      ],
+    },
   },
   {
     id: 'debate',
@@ -156,6 +372,24 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「在我看来」？', options: ['En mi opinión', 'En mi opinión de mí', 'Opino en mí'], correctIndex: 0 },
     speakPrompt: 'En mi opinión, aprender idiomas abre puertas. Sin embargo, requiere tiempo y constancia.',
     practiceItems: ['写 200 词议论文：远程工作', '1 分钟辩论：社交媒体'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：社交媒体的利与弊（议论文范文）',
+      context: '一篇结构完整的议论文范文：引入—正反论点—个人观点—结论。可作写作模板。',
+      sentences: [
+        { es: 'Las redes sociales forman parte de nuestra vida diaria.', zh: '社交媒体已成为我们日常生活的一部分。' },
+        { es: 'Por un lado, permiten estar en contacto con gente de todo el mundo.', zh: '一方面，它们让我们与世界各地的人保持联系。' },
+        { es: 'Por otro lado, pueden generar adicción y afectar a la concentración.', zh: '另一方面，它们可能造成成瘾并影响专注力。' },
+        { es: 'Desde mi punto de vista, el problema no es la herramienta, sino su uso.', zh: '在我看来，问题不在工具本身，而在如何使用。' },
+        { es: 'Es fundamental que aprendamos a poner límites.', zh: '关键在于我们学会设定界限。' },
+        { es: 'En conclusión, las redes son útiles si las usamos con responsabilidad.', zh: '总之，只要负责任地使用，社交媒体是有用的。' },
+      ],
+      questions: [
+        { question: '文章讨论什么？', options: ['社交媒体', '远程办公', '环境保护'], correctIndex: 0, explanation: '“Las redes sociales”。' },
+        { question: '文中提到的一个缺点？', options: ['成瘾、影响专注', '花钱多', '速度慢'], correctIndex: 0, explanation: '“pueden generar adicción y afectar a la concentración”。' },
+        { question: '作者的核心观点是？', options: ['问题在使用方式，要负责任地用', '应该完全禁止', '越多越好'], correctIndex: 0, explanation: '“el problema no es la herramienta, sino su uso”。' },
+      ],
+    },
   },
   {
     id: 'b2-review',
@@ -168,5 +402,23 @@ export const B2_TOPICS: GrammarTopic[] = [
     quiz: { question: 'B2：「重要的是大家合作」？', options: ['Lo importante es que colaboremos.', 'Lo importante es que colaboramos.'], correctIndex: 0 },
     speakPrompt: 'En mi opinión, lo difícil no es la gramática sino la práctica. Sin embargo, con esfuerzo se progresa.',
     practiceItems: ['模拟 DELE B2 写作', '10 分钟辩论录音'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：我的 B2 学习回顾',
+      context: 'B2 综合短文，串联虚拟式、连接词、lo+形容词、名词化与议论表达。',
+      sentences: [
+        { es: 'Cuando empecé el nivel B2, no creía que pudiera escribir un texto así.', zh: '开始 B2 时，我没想到自己能写出这样的文章。' },
+        { es: 'Lo más difícil para mí ha sido dominar el subjuntivo.', zh: '对我来说最难的是掌握虚拟式。' },
+        { es: 'Sin embargo, con práctica diaria he mejorado mucho.', zh: '然而，通过每天练习，我进步了很多。' },
+        { es: 'Ahora puedo defender mi opinión en un debate sin ponerme nervioso.', zh: '现在我能在辩论中表达观点而不紧张。' },
+        { es: 'Es importante que siga leyendo prensa y escuchando radio en español.', zh: '重要的是我继续读西语报刊、听西语广播。' },
+        { es: 'En definitiva, aunque queda camino, estoy orgulloso de mi progreso.', zh: '总之，虽然还有路要走，我为自己的进步自豪。' },
+      ],
+      questions: [
+        { question: '作者觉得 B2 最难的是什么？', options: ['虚拟式', '过去时', '发音'], correctIndex: 0, explanation: '“Lo más difícil... ha sido dominar el subjuntivo.”' },
+        { question: '他靠什么取得进步？', options: ['每天练习', '天赋', '运气'], correctIndex: 0, explanation: '“con práctica diaria he mejorado mucho”。' },
+        { question: '他打算继续做什么？', options: ['读西语报刊、听广播', '停止学习', '只做语法题'], correctIndex: 0, explanation: '“siga leyendo prensa y escuchando radio en español”。' },
+      ],
+    },
   },
 ];

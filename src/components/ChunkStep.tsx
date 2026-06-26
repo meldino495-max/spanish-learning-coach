@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Step } from '../types';
-import { speakSpanish } from '../utils/speech';
-import { useSRS } from '../hooks/useSRS';
+import { useLanguage } from '../context/LanguageContext';
+import { useLanguageSRS } from '../hooks/useLanguageData';
 
 interface Props {
   step: Step;
@@ -11,7 +11,8 @@ interface Props {
 
 /** 语块学习：背整句，不背孤立单词 */
 export function ChunkStep({ step, done, onToggle }: Props) {
-  const { addMany } = useSRS();
+  const { speak } = useLanguage();
+  const { addMany } = useLanguageSRS();
   const chunks = step.chunkItems ?? step.vocabItems ?? [];
   const [active, setActive] = useState(0);
 
@@ -43,7 +44,7 @@ export function ChunkStep({ step, done, onToggle }: Props) {
           <p className="chunk-es">{c.es}</p>
           <p className="chunk-zh">{c.zh}</p>
           {c.note && <p className="chunk-note">{c.note}</p>}
-          <button type="button" className="btn btn-secondary btn-sm" onClick={() => speakSpanish(c.es)}>
+          <button type="button" className="btn btn-secondary btn-sm" onClick={() => speak(c.es)}>
             🔊 听一遍
           </button>
         </div>

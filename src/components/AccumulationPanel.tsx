@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { speakSpanish } from '../utils/speech';
-import { useSRS } from '../hooks/useSRS';
+import { useLanguage } from '../context/LanguageContext';
+import { useLanguageSRS } from '../hooks/useLanguageData';
 import type { SRSRating } from '../hooks/srsCore';
 import { SRS_INTERVALS_DAYS } from '../hooks/srsCore';
 
@@ -11,7 +11,8 @@ interface Props {
 }
 
 export function AccumulationPanel({ open, onClose, startReview }: Props) {
-  const { items, dueItems, rateItem, removeItem, clearAll } = useSRS();
+  const { speak } = useLanguage();
+  const { items, dueItems, rateItem, removeItem, clearAll } = useLanguageSRS();
   const [reviewMode, setReviewMode] = useState(false);
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -69,7 +70,7 @@ export function AccumulationPanel({ open, onClose, startReview }: Props) {
                 className="btn-icon"
                 onClick={(e) => {
                   e.stopPropagation();
-                  speakSpanish(card.es);
+                  speak(card.es);
                 }}
               >
                 🔊
@@ -122,7 +123,7 @@ export function AccumulationPanel({ open, onClose, startReview }: Props) {
                         </small>
                       </div>
                       <div className="accum-item-actions">
-                        <button type="button" className="btn-icon" onClick={() => speakSpanish(item.es)}>
+                        <button type="button" className="btn-icon" onClick={() => speak(item.es)}>
                           🔊
                         </button>
                         <button type="button" className="btn-icon" onClick={() => removeItem(item.id)}>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { Step } from '../types';
 import { getSpeechRecognition } from '../utils/speech';
+import { acquireMicrophone, releaseMicrophone } from '../utils/audioDevices';
+import { useAudioDevices } from '../context/AudioDeviceContext';
 
 interface Props {
   step: Step;
@@ -12,22 +14,39 @@ interface Props {
 export function FeynmanStep({ step, done, onToggle }: Props) {
   const [explanation, setExplanation] = useState('');
   const [spoken, setSpoken] = useState('');
+  const [recording, setRecording] = useState(false);
+  const { inputDeviceId } = useAudioDevices();
   const SR = getSpeechRecognition();
 
-  const startExplain = () => {
+  const startExplain = async () => {
     if (!SR) {
       setSpoken('（浏览器不支持语音识别，请口头解释后文字写下）');
       return;
     }
+    try {
+      await acquireMicrophone(inputDeviceId);
+      releaseMicrophone();
+    } catch {
+      setSpoken('（无法访问所选麦克风，请在顶部「音频」中更换输入设备）');
+      return;
+    }
+
     const rec = new SR();
-    rec.lang = 'zh-CN';
+    rec.lang = 'zh-TW';
     rec.continuous = true;
     rec.interimResults = true;
+    setRecording(true);
     let text = '';
     rec.onresult = (ev) => {
       for (let i = 0; i < ev.results.length; i++) text += ev.results[i][0].transcript;
       setSpoken(text.trim());
     };
+    const finish = () => {
+      setRecording(false);
+      releaseMicrophone();
+    };
+    rec.onend = finish;
+    rec.onerror = finish;
     rec.start();
     setTimeout(() => rec.stop(), 60000);
   };
@@ -54,8 +73,8 @@ export function FeynmanStep({ step, done, onToggle }: Props) {
         onChange={(e) => setExplanation(e.target.value)}
       />
       <div className="step-actions">
-        <button type="button" className="btn btn-secondary" onClick={startExplain}>
-          🎤 口头解释（中文，录音）
+        <button type="button" className="btn btn-secondary" onClick={() => void startExplain()} disabled={recording}>
+          {recording ? '🎤 录音中…' : '🎤 口头解释（中文，录音）'}
         </button>
       </div>
       {spoken && (

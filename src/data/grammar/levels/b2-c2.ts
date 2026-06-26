@@ -12,6 +12,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '转述「¿Vendrás?」？', options: ['Preguntó si vendría.', 'Preguntó si vendré.'], correctIndex: 0 },
     speakPrompt: 'Me dijo que no creía que fuera posible. Preguntó dónde había estado.',
     dictation: 'Comentó que habría sido mejor esperar.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：面试之后',
+      context: '高级间接引语，涉及时态后移、虚拟式与条件式转述。',
+      sentences: [
+        { es: 'Después de la entrevista, le pregunté a mi amigo cómo le había ido.', zh: '面试后，我问朋友进行得怎样。' },
+        { es: 'Me contó que el entrevistador le había preguntado por qué quería el puesto.', zh: '他说面试官问他为什么想要这个职位。' },
+        { es: 'Añadió que no sabía si lo habrían seleccionado.', zh: '他补充说不知道是否会被选中。' },
+        { es: 'Comentó que, de haberlo sabido, se habría preparado más.', zh: '他说早知道的话会准备得更充分。' },
+        { es: 'Le dije que no se preocupara y que esperara la respuesta.', zh: '我让他别担心，等回复。' },
+        { es: 'Al final, me preguntó si yo creía que tenía posibilidades.', zh: '最后他问我是否觉得他有机会。' },
+      ],
+      questions: [
+        { question: '面试官问了什么？', options: ['为什么想要这个职位', '期望的薪水', '能否加班'], correctIndex: 0, explanation: '“por qué quería el puesto”。' },
+        { question: '朋友后悔什么？', options: ['没准备得更充分', '迟到了', '穿错衣服'], correctIndex: 0, explanation: '“de haberlo sabido, se habría preparado más”。' },
+        { question: '作者给的建议是？', options: ['别担心，等回复', '马上再投简历', '打电话催'], correctIndex: 0, explanation: '“que no se preocupara y que esperara la respuesta”。' },
+      ],
+    },
   },
   {
     id: 'idioms-2',
@@ -24,6 +42,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「他说到点子上了」？', options: ['Dio en el clavo.', 'Metió la pata.', 'Tomó el pelo.'], correctIndex: 0 },
     speakPrompt: 'No tengo pelos en la lengua: creo que debemos cambiar. Me tomaron el pelo.',
     dictation: 'Será pan comido si practicas.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：习语满满的一段话',
+      context: '集中使用 C1 级习语：costar un ojo de la cara、no tener pelos en la lengua、dar en el clavo、ser pan comido、andar con pies de plomo、quedarse en blanco。',
+      sentences: [
+        { es: 'Comprar un piso en el centro cuesta un ojo de la cara.', zh: '在市中心买房贵得离谱。' },
+        { es: 'Mi hermano no tiene pelos en la lengua y siempre dice lo que piensa.', zh: '我哥心直口快，总是直言不讳。' },
+        { es: 'En la reunión, el jefe dio en el clavo con su propuesta.', zh: '会上老板的提议正中要害。' },
+        { es: 'Al principio el examen me pareció pan comido, pero me equivoqué.', zh: '起初我觉得考试小菜一碟，结果错了。' },
+        { es: 'Tienes que andar con pies de plomo en ese tema tan delicado.', zh: '在那个敏感话题上你得小心翼翼。' },
+        { es: 'Cuando me preguntaron, me quedé en blanco y no supe qué decir.', zh: '被问到时我脑子一片空白，不知说什么。' },
+      ],
+      questions: [
+        { question: '在市中心买房怎样？', options: ['贵得离谱', '很划算', '不可能'], correctIndex: 0, explanation: '“cuesta un ojo de la cara”。' },
+        { question: '哥哥是什么样的人？', options: ['心直口快', '沉默寡言', '爱撒谎'], correctIndex: 0, explanation: '“no tiene pelos en la lengua”。' },
+        { question: '「quedarse en blanco」指什么？', options: ['脑子一片空白', '脸色发白', '考了零分'], correctIndex: 0, explanation: '“me quedé en blanco y no supe qué decir”。' },
+      ],
+    },
   },
   {
     id: 'discourse-markers',
@@ -36,6 +72,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「也就是说」？', options: ['Es decir / O sea', 'Por cierto', 'En fin'], correctIndex: 0 },
     speakPrompt: 'Bueno, pues, la verdad es que es complicado. O sea, hay que pensarlo bien.',
     dictation: 'Por cierto, mañana no puedo.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：办公室八卦（口语标记语）',
+      context: '一段非常口语化的独白，集中使用语篇标记语：bueno、pues、o sea、a ver、por cierto、en fin。',
+      sentences: [
+        { es: 'Bueno, pues, te cuento lo que pasó ayer en la oficina.', zh: '那个，我跟你说说昨天办公室发生的事。' },
+        { es: 'Resulta que, o sea, cambiaron todo el horario sin avisar.', zh: '结果呢，也就是说，他们没通知就改了全部时间表。' },
+        { es: 'A ver, no es que me moleste, pero podrían haberlo dicho antes.', zh: '这么说吧，我倒不是生气，但他们本可以早点说。' },
+        { es: 'Por cierto, ¿sabes que María se va a otra empresa?', zh: '对了，你知道 María 要去另一家公司吗？' },
+        { es: 'En fin, la verdad es que el ambiente está un poco raro últimamente.', zh: '总之，说真的，最近气氛有点怪。' },
+        { es: 'O sea, que tendremos que adaptarnos, qué remedio.', zh: '也就是说，我们得适应，没办法。' },
+      ],
+      questions: [
+        { question: '昨天办公室发生了什么？', options: ['没通知就改了时间表', '老板辞职了', '停电了'], correctIndex: 0, explanation: '“cambiaron todo el horario sin avisar”。' },
+        { question: '「por cierto」引出的消息是？', options: ['María 要去别的公司', '要发奖金', '要搬办公室'], correctIndex: 0, explanation: '“¿sabes que María se va a otra empresa?”' },
+        { question: '作者对最近的气氛感觉如何？', options: ['有点怪', '很融洽', '很紧张'], correctIndex: 0, explanation: '“el ambiente está un poco raro últimamente”。' },
+      ],
+    },
   },
   {
     id: 'academic-writing',
@@ -48,6 +102,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「值得注意的是」？', options: ['Cabe señalar que', 'Quiero decir que', 'O sea que'], correctIndex: 0 },
     speakPrompt: 'Según los datos, la tendencia es clara. En definitiva, hacen falta más recursos.',
     practiceItems: ['写 300 词学术段落：气候变化', '改写口语句为正式书面语'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：气候变化（学术段落）',
+      context: '一段学术写作范例，使用 se 被动、名词化、连接词与正式引述结构。',
+      sentences: [
+        { es: 'En el presente texto se analiza el impacto del cambio climático.', zh: '本文分析气候变化的影响。' },
+        { es: 'Según diversos estudios, las temperaturas han aumentado de forma notable.', zh: '据多项研究，气温显著上升。' },
+        { es: 'Cabe señalar que las consecuencias afectan tanto al medio ambiente como a la economía.', zh: '值得注意的是，其后果同时影响环境与经济。' },
+        { es: 'Se ha observado, asimismo, un aumento de los fenómenos meteorológicos extremos.', zh: '同样，人们观察到极端天气现象增多。' },
+        { es: 'De acuerdo con los expertos, es necesario adoptar medidas urgentes.', zh: '根据专家意见，有必要采取紧急措施。' },
+        { es: 'En definitiva, la cooperación internacional resulta imprescindible.', zh: '总之，国际合作不可或缺。' },
+      ],
+      questions: [
+        { question: '本文分析什么？', options: ['气候变化的影响', '全球经济', '人口增长'], correctIndex: 0, explanation: '“se analiza el impacto del cambio climático”。' },
+        { question: '后果影响哪些方面？', options: ['环境与经济', '只影响农业', '只影响交通'], correctIndex: 0, explanation: '“afectan tanto al medio ambiente como a la economía”。' },
+        { question: '专家认为需要什么？', options: ['采取紧急措施、国际合作', '继续观察', '减少研究'], correctIndex: 0, explanation: '“es necesario adoptar medidas urgentes... la cooperación internacional”。' },
+      ],
+    },
   },
   {
     id: 'media-spanish',
@@ -60,6 +132,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '新闻标题「政府宣布改革」？', options: ['El gobierno anuncia reformas.', 'El gobierno anunció reformas ayer.'], correctIndex: 0 },
     speakPrompt: 'Según el periódico, la economía crece. Se ha confirmado el acuerdo.',
     dictation: 'Las autoridades investigan el caso.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：一则新闻',
+      context: '模仿西班牙新闻的语体与措辞：ha anunciado、según fuentes、en declaraciones a la prensa、por su parte。',
+      sentences: [
+        { es: 'El Gobierno ha anunciado hoy una nueva ley de vivienda.', zh: '政府今日宣布一项新的住房法。' },
+        { es: 'Según fuentes oficiales, la medida entrará en vigor el próximo mes.', zh: '据官方消息，该措施将于下月生效。' },
+        { es: 'En declaraciones a la prensa, la ministra defendió la reforma.', zh: '在向媒体发表的声明中，部长为改革辩护。' },
+        { es: 'Por su parte, la oposición ha criticado duramente la propuesta.', zh: '反对派则对该提议提出严厉批评。' },
+        { es: 'Se registran ya las primeras reacciones en las redes sociales.', zh: '社交媒体上已出现首批反应。' },
+        { es: 'Las autoridades investigan, además, posibles efectos en el mercado.', zh: '此外，当局正调查其对市场可能的影响。' },
+      ],
+      questions: [
+        { question: '政府宣布了什么？', options: ['新的住房法', '减税政策', '教育改革'], correctIndex: 0, explanation: '“una nueva ley de vivienda”。' },
+        { question: '措施何时生效？', options: ['下个月', '今天', '明年'], correctIndex: 0, explanation: '“entrará en vigor el próximo mes”。' },
+        { question: '反对派的态度？', options: ['严厉批评', '表示支持', '保持沉默'], correctIndex: 0, explanation: '“la oposición ha criticado duramente la propuesta”。' },
+      ],
+    },
   },
   {
     id: 'regional',
@@ -72,6 +162,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '拉美更常说？', options: ['computadora', 'ordenador', 'ambos iguales'], correctIndex: 0 },
     speakPrompt: 'En México dicen «¿Mande?» En España, «¿Cómo?» para pedir repetición.',
     dictation: 'Cogí el autobús. (ES) / Tomé el bus. (LA)',
+    reading: {
+      format: 'article',
+      title: '阅读短文：西班牙语的地区差异',
+      context: '一段介绍西班牙与拉美用法差异的文字（vosotros/ustedes、coche/carro、ordenador/computadora、voseo）。',
+      sentences: [
+        { es: 'El español es una lengua con muchas variantes según el país.', zh: '西语是一门因国家不同而有许多变体的语言。' },
+        { es: 'En España se usa «vosotros», mientras que en América se prefiere «ustedes».', zh: '西班牙用「vosotros」，而美洲偏好「ustedes」。' },
+        { es: 'Lo que en España es un «coche», en México es un «carro».', zh: '西班牙的「coche」（车），在墨西哥叫「carro」。' },
+        { es: 'Los españoles dicen «ordenador»; los latinoamericanos, «computadora».', zh: '西班牙人说「ordenador」（电脑），拉美人说「computadora」。' },
+        { es: 'En Argentina y otros países se usa el «voseo»: «vos tenés».', zh: '在阿根廷等国使用「voseo」：「vos tenés」。' },
+        { es: 'Lo importante es elegir una variante y mantener la coherencia.', zh: '重要的是选定一种变体并保持一致。' },
+      ],
+      questions: [
+        { question: '西班牙用哪个第二人称复数？', options: ['vosotros', 'ustedes', 'vos'], correctIndex: 0, explanation: '“En España se usa «vosotros»”。' },
+        { question: '「电脑」在拉美怎么说？', options: ['computadora', 'ordenador', 'coche'], correctIndex: 0, explanation: '“los latinoamericanos, «computadora»”。' },
+        { question: '作者的建议是？', options: ['选定一种变体并保持一致', '混用所有变体', '只学拉美西语'], correctIndex: 0, explanation: '“elegir una variante y mantener la coherencia”。' },
+      ],
+    },
   },
   {
     id: 'subj-edge',
@@ -84,6 +192,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '「祝你顺利！」？', options: ['¡Que te vaya bien!', '¡Te va bien!', '¡Que vas bien!'], correctIndex: 0 },
     speakPrompt: '¡Que tengas suerte! Esperemos que todo salga bien.',
     dictation: '¡Viva la libertad!',
+    reading: {
+      format: 'article',
+      title: '阅读短文：独立句中的虚拟式',
+      context: '介绍虚拟式在独立句、固定祝愿语中的用法（¡Que te vaya bien! / ¡Que tengas suerte! / Esperemos que...）。',
+      sentences: [
+        { es: 'En español, el subjuntivo aparece también en frases independientes.', zh: '西语中，虚拟式也出现在独立句里。' },
+        { es: 'Cuando nos despedimos, decimos «¡Que te vaya bien!».', zh: '道别时我们说「祝你顺利！」。' },
+        { es: 'Para desear suerte antes de un examen: «¡Que tengas suerte!».', zh: '考试前祝好运：「祝你好运！」。' },
+        { es: 'Algunas expresiones fijas son «¡Viva España!» o «¡Que descanses!».', zh: '一些固定表达如「西班牙万岁！」或「好好休息！」。' },
+        { es: 'También se usa en deseos colectivos: «Esperemos que todo salga bien».', zh: '也用于集体愿望：「但愿一切顺利」。' },
+        { es: 'Reconocer estos usos ayuda a sonar más natural.', zh: '认得这些用法能让你说得更地道。' },
+      ],
+      questions: [
+        { question: '「¡Que te vaya bien!」用于什么场合？', options: ['道别', '道歉', '感谢'], correctIndex: 0, explanation: '“Cuando nos despedimos”。' },
+        { question: '考试前祝好运怎么说？', options: ['¡Que tengas suerte!', '¡Buenos días!', '¡Lo siento!'], correctIndex: 0, explanation: '“Para desear suerte antes de un examen”。' },
+        { question: '认得这些用法的好处？', options: ['说得更地道', '语速更快', '词汇更多'], correctIndex: 0, explanation: '“ayuda a sonar más natural”。' },
+      ],
+    },
   },
   {
     id: 'ellipsis',
@@ -96,6 +222,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '口语「不知道」常？', options: ['No sé.', 'No lo sé.', 'Ambas naturales.'], correctIndex: 2 },
     speakPrompt: '（模仿省略）¿Vienes? Ya voy. ¿Qué tal el trabajo? Bien.',
     dictation: '¿Para cuándo lo necesitas?',
+    reading: {
+      format: 'article',
+      title: '阅读短文：听懂飞快的口语',
+      context: '讲解日常口语中的省略与压缩现象，帮助听懂母语者的快速对话。',
+      sentences: [
+        { es: 'En la conversación rápida, los hispanohablantes omiten muchas palabras.', zh: '在快速对话中，西语母语者会省略很多词。' },
+        { es: 'En lugar de «¿Vas a ir a la fiesta?», dicen simplemente «¿Vas?».', zh: '他们不说「你要去派对吗？」，只说「去吗？」。' },
+        { es: '«No lo sé» se reduce a «No sé» en el habla cotidiana.', zh: '日常口语中「No lo sé」简化为「No sé」。' },
+        { es: 'Cuando alguien pregunta «¿Qué tal?», basta con responder «Bien».', zh: '有人问「怎么样？」时，回答「挺好」就够了。' },
+        { es: '«Para mañana» puede significar «para el examen de mañana».', zh: '「para mañana」可能指「为了明天的考试」。' },
+        { es: 'Entender estas elipsis es clave para seguir el ritmo nativo.', zh: '理解这些省略是跟上母语者节奏的关键。' },
+      ],
+      questions: [
+        { question: '母语者在快速对话中会怎样？', options: ['省略很多词', '说得更慢', '重复每句话'], correctIndex: 0, explanation: '“omiten muchas palabras”。' },
+        { question: '「¿Vas a ir a la fiesta?」常被简化为？', options: ['¿Vas?', '¿Fiesta?', '¿Ir?'], correctIndex: 0, explanation: '“dicen simplemente «¿Vas?»”。' },
+        { question: '理解这些省略的意义？', options: ['跟上母语者节奏', '提高写作', '记更多单词'], correctIndex: 0, explanation: '“clave para seguir el ritmo nativo”。' },
+      ],
+    },
   },
   {
     id: 'pragmatics',
@@ -108,6 +252,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: '更礼貌的请求？', options: ['¿Te importaría ayudarme?', 'Ayúdame.'], correctIndex: 0 },
     speakPrompt: 'Me encantaría ir, pero no puedo. ¿Te importaría repetir eso?',
     dictation: 'No es para tanto.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：话里有话（语用与礼貌）',
+      context: '讲解西语中的间接与礼貌：不直接说「不」、用条件式软化抱怨、领会反语。',
+      sentences: [
+        { es: 'En español, muchas veces no se dice «no» directamente.', zh: '西语里很多时候不直接说「不」。' },
+        { es: 'Para rechazar una invitación, se suele decir «Me encantaría, pero...».', zh: '拒绝邀请时常说「我很想去，但是……」。' },
+        { es: 'Una queja suave puede ser «¿Te importaría bajar la música?».', zh: '委婉的抱怨可以是「你介意把音乐调小吗？」。' },
+        { es: 'A veces «No está mal» significa, en realidad, «Está muy bien».', zh: '有时「还不错」其实意思是「非常好」。' },
+        { es: 'El tono y el contexto cambian por completo el significado.', zh: '语气和语境会彻底改变含义。' },
+        { es: 'Captar estas implicaturas es señal de competencia avanzada.', zh: '领会这些言外之意是高级能力的标志。' },
+      ],
+      questions: [
+        { question: '西语里拒绝邀请常怎么说？', options: ['「Me encantaría, pero...」', '「No, no quiero」', '「Nunca」'], correctIndex: 0, explanation: '间接拒绝更礼貌。' },
+        { question: '「No está mal」有时实际意思是？', options: ['非常好', '很糟', '一般'], correctIndex: 0, explanation: '“significa, en realidad, «Está muy bien»”。' },
+        { question: '领会言外之意说明什么？', options: ['高级语言能力', '词汇量小', '语法不好'], correctIndex: 0, explanation: '“señal de competencia avanzada”。' },
+      ],
+    },
   },
   {
     id: 'c1-review',
@@ -120,6 +282,24 @@ export const C1_TOPICS: GrammarTopic[] = [
     quiz: { question: 'C1：正式总结用语？', options: ['En definitiva', 'Bueno pues', 'O sea'], correctIndex: 0 },
     speakPrompt: 'En definitiva, creo que la inversión en educación es fundamental. Cabe señalar que los resultados tardan.',
     practiceItems: ['模拟 C1 口试 15 分钟', '听新闻写摘要 150 词'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：我的 C1 学习回顾',
+      context: 'C1 综合短文，融合学术、媒体、语用、间接引语与语篇标记语。',
+      sentences: [
+        { es: 'A lo largo del nivel C1 he aprendido a expresarme con más matices.', zh: '在 C1 阶段我学会了更细腻地表达。' },
+        { es: 'Cabe señalar que ahora distingo bien los registros formal e informal.', zh: '值得一提的是，我现在能很好地区分正式与非正式语域。' },
+        { es: 'Según mi experiencia, leer prensa a diario ha sido fundamental.', zh: '据我的经验，每天读报至关重要。' },
+        { es: 'Aunque todavía cometo algún error, me defiendo en cualquier situación.', zh: '虽然偶尔还出错，但任何场合我都能应对。' },
+        { es: 'Es decir, ya no traduzco mentalmente, sino que pienso en español.', zh: '也就是说，我不再在脑中翻译，而是用西语思考。' },
+        { es: 'En definitiva, mi objetivo ahora es alcanzar el nivel C2.', zh: '总之，我现在的目标是达到 C2。' },
+      ],
+      questions: [
+        { question: 'C1 阶段作者学会了什么？', options: ['更细腻地表达', '基础语法', '打字'], correctIndex: 0, explanation: '“expresarme con más matices”。' },
+        { question: '据作者经验，什么很关键？', options: ['每天读报', '只背单词', '少说多看'], correctIndex: 0, explanation: '“leer prensa a diario ha sido fundamental”。' },
+        { question: '作者现在的目标？', options: ['达到 C2', '停止学习', '换语言'], correctIndex: 0, explanation: '“mi objetivo ahora es alcanzar el nivel C2”。' },
+      ],
+    },
   },
 ];
 
@@ -135,6 +315,24 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: '童话开头常？', options: ['Había una vez...', 'Hay una vez...', 'Hubo una vez...'], correctIndex: 0 },
     speakPrompt: '（朗读一段文学节选，注意时态与语调）',
     practiceItems: ['读一篇 500 字短篇', '分析 3 个文学时态用法'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：海边的灯塔（文学体）',
+      context: '一段文学叙事节选，留意 imperfecto、pluscuamperfecto、condicional compuesto 等时态与文学语调。',
+      sentences: [
+        { es: 'Había una vez un viejo farero que vivía solo frente al mar.', zh: '从前有一位老灯塔看守人，独自住在海边。' },
+        { es: 'Cada noche, mientras la tormenta rugía, encendía su lámpara.', zh: '每晚暴风雨咆哮时，他都点起灯。' },
+        { es: 'Nunca había conocido otra vida, ni la deseaba.', zh: '他从未体验过别的生活，也不渴望。' },
+        { es: 'De haber sabido lo que le esperaba, quizá habría bajado al pueblo.', zh: '早知道等着他的是什么，他或许会下山进村。' },
+        { es: 'Pero el destino, como quien no quiere la cosa, llamó a su puerta.', zh: '但命运不经意间敲响了他的门。' },
+        { es: 'Y así comenzó la historia que nadie se atrevería a contar.', zh: '于是，那个无人敢讲述的故事就此开始。' },
+      ],
+      questions: [
+        { question: '故事主人公是谁？', options: ['老灯塔看守人', '渔夫', '船长'], correctIndex: 0, explanation: '“un viejo farero”。' },
+        { question: '他每晚做什么？', options: ['点起灯', '出海', '写信'], correctIndex: 0, explanation: '“encendía su lámpara”。' },
+        { question: '这段文字的风格属于？', options: ['文学叙事', '新闻报道', '法律文书'], correctIndex: 0, explanation: '童话式开头「Había una vez」与文学时态。' },
+      ],
+    },
   },
   {
     id: 'legal-professional',
@@ -147,6 +345,24 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「根据法律」？', options: ['En virtud de la ley', 'Por la ley de', 'Según ley la'], correctIndex: 0 },
     speakPrompt: 'El contrato establece que... Queda prohibido divulgar la información.',
     dictation: 'A efectos de este acuerdo...',
+    reading: {
+      format: 'article',
+      title: '阅读短文：一份租房合同（法律体）',
+      context: '一段合同条款文本，集中使用法律/正式专业用语：en virtud de、queda prohibido、a efectos de、conllevar。',
+      sentences: [
+        { es: 'El presente contrato establece las condiciones entre ambas partes.', zh: '本合同规定双方之间的条件。' },
+        { es: 'En virtud de la legislación vigente, el arrendatario se compromete a pagar la renta.', zh: '根据现行法律，承租人承诺支付租金。' },
+        { es: 'Queda expresamente prohibido subarrendar la vivienda sin autorización.', zh: '明确禁止未经授权转租该住房。' },
+        { es: 'A efectos de este acuerdo, cualquier reforma deberá ser notificada por escrito.', zh: '就本协议而言，任何改造均须书面通知。' },
+        { es: 'El incumplimiento de estas cláusulas podrá conllevar la rescisión del contrato.', zh: '违反这些条款可能导致合同解除。' },
+        { es: 'Ambas partes firman el presente documento de mutuo acuerdo.', zh: '双方在相互同意下签署本文件。' },
+      ],
+      questions: [
+        { question: '这段文字属于什么类型？', options: ['合同/法律文本', '私人信件', '新闻报道'], correctIndex: 0, explanation: '“El presente contrato establece las condiciones”。' },
+        { question: '明确禁止什么？', options: ['未经授权转租', '养宠物', '装空调'], correctIndex: 0, explanation: '“Queda expresamente prohibido subarrendar... sin autorización”。' },
+        { question: '违反条款可能导致什么？', options: ['合同解除', '罚款一欧元', '延期一年'], correctIndex: 0, explanation: '“podrá conllevar la rescisión del contrato”。' },
+      ],
+    },
   },
   {
     id: 'humor-irony',
@@ -159,6 +375,24 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「No me digas」表惊讶常等于？', options: ['真的吗！', '别告诉我（字面）', '不要说话'], correctIndex: 0 },
     speakPrompt: '（观看喜剧片段并复述笑点）',
     practiceItems: ['看西语 stand-up 5 分钟', '记录 3 个双关或讽刺表达'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：西班牙式幽默与反讽',
+      context: '讲解反讽与夸张如何运作，并给出典型例子。',
+      sentences: [
+        { es: 'El humor español se basa mucho en la ironía y la exageración.', zh: '西班牙幽默很大程度上依赖反讽和夸张。' },
+        { es: 'Cuando algo sale fatal, alguien dice «¡Qué bien, lo que faltaba!».', zh: '当事情糟透了，有人会说「真好，就差这个了！」。' },
+        { es: 'Si llueve el día de la excursión, oirás «¡Vaya tiempo más estupendo!».', zh: '郊游那天下雨，你会听到「这天气真是棒极了！」。' },
+        { es: 'La ironía consiste en decir lo contrario de lo que se piensa.', zh: '反讽就是说与本意相反的话。' },
+        { es: 'Para captarla, hay que fijarse en el tono y el contexto.', zh: '要领会它，必须留意语气和语境。' },
+        { es: 'Dominar el humor de un idioma es uno de los últimos pasos.', zh: '掌握一门语言的幽默是最后的步骤之一。' },
+      ],
+      questions: [
+        { question: '西班牙幽默常依赖什么？', options: ['反讽和夸张', '谐音字谜', '方言'], correctIndex: 0, explanation: '“la ironía y la exageración”。' },
+        { question: '反讽的本质是？', options: ['说与本意相反的话', '大声说话', '重复别人的话'], correctIndex: 0, explanation: '“decir lo contrario de lo que se piensa”。' },
+        { question: '要领会反讽必须留意什么？', options: ['语气和语境', '语速', '词数'], correctIndex: 0, explanation: '“fijarse en el tono y el contexto”。' },
+      ],
+    },
   },
   {
     id: 'translation',
@@ -171,6 +405,24 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「It depends」？', options: ['Depende.', 'Depende de ello.', 'Es dependiente.'], correctIndex: 0 },
     speakPrompt: 'Traduce mentalmente sin pensar en chino: The sooner, the better → Cuanto antes, mejor.',
     practiceItems: ['中译西 5 句新闻标题', '西译中 1 段播客摘要'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：如何避免翻译腔',
+      context: '讲解为何逐字翻译不自然，以及如何追求「对等」而非「字面」。',
+      sentences: [
+        { es: 'Traducir palabra por palabra suele dar resultados poco naturales.', zh: '逐字翻译往往不自然。' },
+        { es: 'Por ejemplo, «It depends» no es «Eso depende de ello», sino simplemente «Depende».', zh: '例如「It depends」不是「Eso depende de ello」，而就是「Depende」。' },
+        { es: 'La expresión «The sooner, the better» equivale a «Cuanto antes, mejor».', zh: '「The sooner, the better」对应「Cuanto antes, mejor」。' },
+        { es: 'No se traduce la estructura, sino la idea y la intención.', zh: '翻译的不是结构，而是意思与意图。' },
+        { es: 'Un buen traductor busca la equivalencia, no la literalidad.', zh: '好的译者追求对等，而非字面。' },
+        { es: 'Por eso conviene pensar directamente en la lengua meta.', zh: '因此最好直接用目标语言思考。' },
+      ],
+      questions: [
+        { question: '逐字翻译的问题是？', options: ['往往不自然', '太慢', '太贵'], correctIndex: 0, explanation: '“resultados poco naturales”。' },
+        { question: '「The sooner, the better」对应？', options: ['Cuanto antes, mejor', 'El más pronto, el mejor', 'Tan pronto tan bueno'], correctIndex: 0, explanation: '固定对等表达。' },
+        { question: '好译者追求什么？', options: ['对等而非字面', '字面而非对等', '速度'], correctIndex: 0, explanation: '“busca la equivalencia, no la literalidad”。' },
+      ],
+    },
   },
   {
     id: 'native-maintenance',
@@ -183,6 +435,24 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: '维持 C2 最有效？', options: ['持续母语输入+输出', '只背语法书', '偶尔看看视频'], correctIndex: 0 },
     speakPrompt: 'Describe tu plan de mantenimiento: qué harás cada día, semana y mes.',
     practiceItems: ['制定 90 天 C2 维护计划', '注册 italki/Tandem 每周练习'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：如何维持母语级水平',
+      context: '一份关于语言维护的建议文，使用 conviene、es recomendable、asimismo 等正式建议结构。',
+      sentences: [
+        { es: 'Mantener un nivel alto requiere constancia, no solo alcanzarlo.', zh: '维持高水平需要恒心，而不仅是达到它。' },
+        { es: 'Conviene dedicar cada día un rato a escuchar pódcasts o ver series.', zh: '最好每天花一点时间听播客或看剧集。' },
+        { es: 'Asimismo, leer un libro al mes ayuda a ampliar el vocabulario.', zh: '同样，每月读一本书有助于扩大词汇。' },
+        { es: 'Es recomendable mantener conversaciones reales con hablantes nativos.', zh: '建议与母语者进行真实对话。' },
+        { es: 'Escribir un texto largo al mes consolida la gramática avanzada.', zh: '每月写一篇长文能巩固高级语法。' },
+        { es: 'En definitiva, el idioma se mantiene usándolo, no guardándolo.', zh: '总之，语言靠使用来维持，而非束之高阁。' },
+      ],
+      questions: [
+        { question: '维持高水平需要什么？', options: ['恒心', '天赋', '运气'], correctIndex: 0, explanation: '“requiere constancia”。' },
+        { question: '每月读书的好处？', options: ['扩大词汇', '提高语速', '改善发音'], correctIndex: 0, explanation: '“ayuda a ampliar el vocabulario”。' },
+        { question: '文章的核心观点是？', options: ['语言靠使用来维持', '语言会自动保持', '学完就够了'], correctIndex: 0, explanation: '“el idioma se mantiene usándolo, no guardándolo”。' },
+      ],
+    },
   },
   {
     id: 'c2-mastery',
@@ -195,5 +465,23 @@ export const C2_TOPICS: GrammarTopic[] = [
     quiz: { question: 'C2 标志？', options: ['几乎任何场合自如表达', '只会旅游用语', '只会现在时'], correctIndex: 0 },
     speakPrompt: 'Discurso final de 10 minutos: tu trayectoria del A1 al C2, un tema social, y preguntas retóricas al público.',
     practiceItems: ['10 分钟毕业演讲录像', 'DELE C2 模拟（如有条件）', '写 C2 级 email 给虚构雇主'],
+    reading: {
+      format: 'article',
+      title: '阅读短文：从 A1 到 C2 的旅程',
+      context: 'C2 综合短文，融合各级时态、语域与修辞，适合作为「毕业」朗读篇。',
+      sentences: [
+        { es: 'Llegar al nivel C2 ha sido un viaje largo que empezó con un simple «hola».', zh: '达到 C2 是一段从简单的「你好」开始的漫长旅程。' },
+        { es: 'He pasado del miedo a hablar a disfrutar de cada conversación.', zh: '我从害怕开口变成享受每一次交谈。' },
+        { es: 'Ahora soy capaz de entender desde un texto legal hasta un chiste.', zh: '现在我能看懂从法律文本到笑话的一切。' },
+        { es: 'Cabe destacar que el secreto no fue el talento, sino la constancia.', zh: '值得强调的是，秘诀不是天赋，而是坚持。' },
+        { es: 'De no haber practicado a diario, jamás habría llegado tan lejos.', zh: '若不是每天练习，我绝不会走这么远。' },
+        { es: 'En definitiva, dominar un idioma es abrir una ventana al mundo.', zh: '总之，精通一门语言就是为自己打开一扇望向世界的窗。' },
+      ],
+      questions: [
+        { question: '这段旅程从什么开始？', options: ['简单的「hola」', '一本语法书', '一次考试'], correctIndex: 0, explanation: '“empezó con un simple «hola»”。' },
+        { question: '作者认为的秘诀是？', options: ['坚持，而非天赋', '天赋', '运气'], correctIndex: 0, explanation: '“el secreto no fue el talento, sino la constancia”。' },
+        { question: '作者如何比喻精通一门语言？', options: ['打开一扇望向世界的窗', '爬上一座山', '通过一场考试'], correctIndex: 0, explanation: '“abrir una ventana al mundo”。' },
+      ],
+    },
   },
 ];

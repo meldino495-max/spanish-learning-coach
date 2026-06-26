@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Step } from '../types';
-import { speakSpanish } from '../utils/speech';
-import { useSRS } from '../hooks/useSRS';
+import { useLanguage } from '../context/LanguageContext';
+import { useLanguageSRS } from '../hooks/useLanguageData';
 
 interface Props {
   step: Step;
@@ -9,15 +9,28 @@ interface Props {
   onToggle: () => void;
 }
 
+function normalizeItem(item: { es: string; zh: string; note?: string } | string) {
+  if (typeof item === 'string') {
+    return { es: item, zh: '' };
+  }
+  return item;
+}
+
 /** 场景联想：在真实生活场景中记表达 */
 export function ScenarioStep({ step, done, onToggle }: Props) {
-  const { addMany } = useSRS();
-  const items = step.scenarioItems ?? [];
+  const { speak } = useLanguage();
+  const { addMany } = useLanguageSRS();
+  const items = (step.scenarioItems ?? []).map(normalizeItem).filter((x) => !x.es.startsWith('（练习）'));
   const [checked, setChecked] = useState<Record<number, boolean>>({});
 
   const saveScenario = () => {
     addMany(
-      items.map((es) => ({ es, zh: step.scenarioTitle ?? '场景', kind: 'scenario' as const })),
+      items.map((x) => ({
+        es: x.es,
+        zh: x.zh || step.scenarioTitle || '场景',
+        note: x.note,
+        kind: 'scenario' as const,
+      })),
       step.scenarioTitle,
     );
   };
@@ -39,9 +52,13 @@ export function ScenarioStep({ step, done, onToggle }: Props) {
                 checked={!!checked[i]}
                 onChange={(e) => setChecked((c) => ({ ...c, [i]: e.target.checked }))}
               />
-              <span>{item}</span>
+              <span>
+                <strong>{item.es}</strong>
+                {item.zh && <span className="scenario-item-zh"> — {item.zh}</span>}
+                {item.note && <em className="scenario-item-note"> ({item.note})</em>}
+              </span>
             </label>
-            <button type="button" className="btn-icon" onClick={() => speakSpanish(item)} title="朗读">
+            <button type="button" className="btn-icon" onClick={() => speak(item.es)} title="朗读">
               🔊
             </button>
           </li>

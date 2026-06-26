@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Step } from '../types';
-import { speakSpanish, stopSpeaking } from '../utils/speech';
+import { useLanguage } from '../context/LanguageContext';
+import { stopSpeaking } from '../utils/speech';
 
 interface Props {
   step: Step;
@@ -10,13 +11,14 @@ interface Props {
 
 /** 影子跟读 Shadowing */
 export function ShadowingStep({ step, done, onToggle }: Props) {
+  const { speak } = useLanguage();
   const lines = step.shadowingLines ?? [];
   const [idx, setIdx] = useState(0);
   const [round, setRound] = useState(1);
   const line = lines[idx];
 
   const play = () => {
-    if (line) speakSpanish(line, 0.75);
+    if (line) speak(line, 0.75);
   };
 
   const next = () => {

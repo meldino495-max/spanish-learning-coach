@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Step } from '../types';
-import { speakSpanish } from '../utils/speech';
-import { useSRS } from '../hooks/useSRS';
+import { useLanguage } from '../context/LanguageContext';
+import { useLanguageSRS } from '../hooks/useLanguageData';
 import type { SRSRating } from '../hooks/srsCore';
 import { SRS_INTERVALS_DAYS } from '../hooks/srsCore';
 
@@ -13,7 +13,8 @@ interface Props {
 
 /** 间隔重复复习（艾宾浩斯：1/3/7/14/30 天） */
 export function SRSStep({ step, done, onToggle }: Props) {
-  const { dueItems, rateItem, items } = useSRS();
+  const { speak } = useLanguage();
+  const { dueItems, rateItem, items } = useLanguageSRS();
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
 
@@ -63,7 +64,7 @@ export function SRSStep({ step, done, onToggle }: Props) {
           className="btn-icon srs-speak"
           onClick={(e) => {
             e.stopPropagation();
-            speakSpanish(card.es);
+            speak(card.es);
           }}
         >
           🔊

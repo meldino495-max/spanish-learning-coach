@@ -24,6 +24,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「他说了」？', options: ['Dijo.', 'Decía.', 'Dice.', 'Ha dicho.'], correctIndex: 0 },
     speakPrompt: 'Ayer fui al mercado. Compré fruta y vine a casa temprano.',
     dictation: 'Tuvimos un examen difícil.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：聊周末做了什么',
+      context: '周一上班，Marta 问同事 Carlos 周末（el finde）做了什么。半岛口语，注意不规则过去时 fui / hice / estuve / tuve / pude。',
+      turns: [
+        { speaker: 'Marta', es: '¿Qué tal el finde? ¿Qué hiciste?', zh: '周末怎么样？你做了什么？' },
+        { speaker: 'Carlos', es: 'El sábado fui a la sierra con unos amigos.', zh: '周六我和几个朋友去山里了。' },
+        { speaker: 'Marta', es: '¡Qué bien! ¿Y qué tal?', zh: '真好！怎么样？' },
+        { speaker: 'Carlos', es: 'Estuvo genial. Hicimos una ruta y comimos en un pueblo.', zh: '棒极了。我们徒步，还在一个村子吃了饭。' },
+        { speaker: 'Marta', es: '¿Y el domingo?', zh: '那周日呢？' },
+        { speaker: 'Carlos', es: 'No pude salir. Tuve que estudiar para un examen.', zh: '没能出门。我得准备一个考试。' },
+      ],
+      questions: [
+        {
+          question: '周六 Carlos 做了什么？',
+          options: ['和朋友去山里徒步', '去了海边', '在家睡觉'],
+          correctIndex: 0,
+          explanation: '“Fui a la sierra... Hicimos una ruta.”',
+        },
+        {
+          question: '他觉得周六怎么样？',
+          options: ['棒极了', '很无聊', '下雨取消了'],
+          correctIndex: 0,
+          explanation: '“Estuvo genial.”',
+        },
+        {
+          question: '他周日为什么没出门？',
+          options: ['要准备考试', '生病了', '要工作'],
+          correctIndex: 0,
+          explanation: '“Tuve que estudiar para un examen.”',
+        },
+      ],
+    },
   },
   {
     id: 'imperfect',
@@ -36,6 +69,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「小时候我常游泳」？', options: ['De niño nadaba mucho.', 'De niño nadé mucho.', 'De niño nado mucho.'], correctIndex: 0 },
     speakPrompt: 'Cuando era joven, vivía en el campo. Todos los veranos íbamos a la playa.',
     dictation: 'Llovía y hacía frío.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：我的童年（Mi infancia）',
+      context: '一篇关于童年回忆的短文（西班牙 EOI/塞万提斯学院常见主题）。注意不完全过去时如何描述过去的习惯、背景与状态。',
+      sentences: [
+        { es: 'Cuando era pequeño, vivía en un pueblo pequeño del norte de España.', zh: '小时候，我住在西班牙北部一个小村庄。' },
+        { es: 'Todos los veranos íbamos a casa de mis abuelos.', zh: '每年夏天我们都去祖父母家。' },
+        { es: 'No había internet, así que jugábamos en la calle con los vecinos.', zh: '那时没有网络，所以我们和邻居在街上玩。' },
+        { es: 'Mi abuela cocinaba para toda la familia los domingos.', zh: '每个周日奶奶为全家做饭。' },
+        { es: 'Yo era muy tímido y leía muchos cómics.', zh: '我很害羞，看很多漫画。' },
+        { es: 'Eran días tranquilos y muy felices.', zh: '那是平静而幸福的日子。' },
+      ],
+      questions: [
+        {
+          question: '作者小时候住在哪里？',
+          options: ['西班牙北部的小村庄', '马德里市中心', '南美的大城市'],
+          correctIndex: 0,
+          explanation: '“vivía en un pueblo pequeño del norte de España”。',
+        },
+        {
+          question: '夏天他们常做什么？',
+          options: ['去祖父母家', '去国外旅行', '上暑期班'],
+          correctIndex: 0,
+          explanation: '“Todos los veranos íbamos a casa de mis abuelos.”',
+        },
+        {
+          question: '作者小时候是什么样的？',
+          options: ['害羞，爱看漫画', '调皮好动', '热爱运动'],
+          correctIndex: 0,
+          explanation: '“Yo era muy tímido y leía muchos cómics.”',
+        },
+      ],
+    },
   },
   {
     id: 'preterite-vs-imperfect',
@@ -48,6 +114,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「窗户开着，他突然关了窗」？', options: ['La ventana estaba abierta y de repente la cerró.', 'La ventana estuvo abierta y cerraba.'], correctIndex: 0 },
     speakPrompt: 'Era un día bonito. Caminé por el parque y vi a un amigo.',
     dictation: 'Cuando llegué, ellos cenaban.',
+    reading: {
+      format: 'article',
+      title: '阅读短文：一件小事（Una anécdota）',
+      context: '一篇叙事短文，混用简单过去时（具体动作）和不完全过去时（背景/描述）——这是西班牙语教材讲故事的典型方式。',
+      sentences: [
+        { es: 'Era una tarde de verano y hacía mucho calor.', zh: '那是个夏日的午后，天气非常热。' },
+        { es: 'Yo paseaba por el centro cuando de repente empezó a llover.', zh: '我正在市中心散步，突然下起了雨。' },
+        { es: 'No tenía paraguas, así que entré en una cafetería.', zh: '我没带伞，于是走进一家咖啡馆。' },
+        { es: 'Mientras esperaba, vi a una vieja amiga del colegio.', zh: '等待时，我看见了一位中学时的老朋友。' },
+        { es: 'Hablamos durante una hora y nos tomamos un café.', zh: '我们聊了一个小时，喝了杯咖啡。' },
+        { es: 'Al final dejó de llover y volví a casa muy contenta.', zh: '最后雨停了，我非常开心地回了家。' },
+      ],
+      questions: [
+        {
+          question: '故事发生时天气如何？',
+          options: ['夏日午后，很热', '冬天，下雪', '春天，多风'],
+          correctIndex: 0,
+          explanation: '“Era una tarde de verano y hacía mucho calor.”（imperfecto 描述背景）',
+        },
+        {
+          question: '她为什么走进咖啡馆？',
+          options: ['下雨且没带伞', '想喝咖啡', '和人约好了'],
+          correctIndex: 0,
+          explanation: '“No tenía paraguas, así que entré en una cafetería.”',
+        },
+        {
+          question: '她在咖啡馆遇见了谁？',
+          options: ['一位中学老朋友', '她的老板', '一位陌生人'],
+          correctIndex: 0,
+          explanation: '“vi a una vieja amiga del colegio”。',
+        },
+      ],
+    },
   },
   {
     id: 'present-perfect',
@@ -61,6 +160,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我已经吃了」？', options: ['Ya he comido.', 'Ya comí.', 'Ya comía.'], correctIndex: 0 },
     speakPrompt: 'Hoy he estudiado tres horas. Nunca he estado en Argentina.',
     dictation: '¿Has visto esta película?',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：今天过得怎么样',
+      context: '下班后 Ana 问同事 Luis 今天做了什么。西班牙半岛常用现在完成时谈「今天/这周」尚未结束时间内的事。',
+      turns: [
+        { speaker: 'Ana', es: '¿Qué tal el día? ¿Qué has hecho?', zh: '今天过得怎么样？你做了什么？' },
+        { speaker: 'Luis', es: 'He tenido mucho trabajo. He ido a tres reuniones.', zh: '我事情很多，开了三个会。' },
+        { speaker: 'Ana', es: '¿Has comido ya?', zh: '你吃过了吗？' },
+        { speaker: 'Luis', es: 'No, todavía no he comido nada.', zh: '还没，我还什么都没吃。' },
+        { speaker: 'Ana', es: '¿Has terminado el informe?', zh: '报告写完了吗？' },
+        { speaker: 'Luis', es: 'Sí, lo he enviado esta mañana.', zh: '写完了，今天早上已经发出去了。' },
+      ],
+      questions: [
+        {
+          question: 'Luis 今天做了什么？',
+          options: ['开了三个会', '休息了一天', '去了海边'],
+          correctIndex: 0,
+          explanation: '“He ido a tres reuniones.”',
+        },
+        {
+          question: 'Luis 吃饭了吗？',
+          options: ['还什么都没吃', '吃过了', '只喝了咖啡'],
+          correctIndex: 0,
+          explanation: '“todavía no he comido nada”。',
+        },
+        {
+          question: '报告怎么样了？',
+          options: ['今早已发送', '还没开始', '明天交'],
+          correctIndex: 0,
+          explanation: '“lo he enviado esta mañana”。',
+        },
+      ],
+    },
   },
   {
     id: 'pluperfect',
@@ -121,6 +253,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「来！」？', options: ['¡Ven!', '¡Vienes!', '¡Venga!'], correctIndex: 0 },
     speakPrompt: '¡Mira! ¡Escucha con atención! ¡Hazlo tú mismo!',
     dictation: '¡Di la verdad!',
+    reading: {
+      format: 'article',
+      title: '阅读短文：食谱 · 西班牙土豆饼（Tortilla de patatas）',
+      context: '一份用 tú 肯定命令式写的食谱说明——西班牙教材里教「给出指令/步骤」的经典素材。注意 pela、corta、bate、mezcla 等命令式。',
+      sentences: [
+        { es: 'Primero, pela cuatro patatas y córtalas en trozos finos.', zh: '首先，削四个土豆，切成薄块。' },
+        { es: 'Calienta aceite en una sartén y fríe las patatas a fuego medio.', zh: '在平底锅里热油，用中火煎土豆。' },
+        { es: 'Bate cuatro huevos en un bol y añade un poco de sal.', zh: '在碗里打四个鸡蛋，加一点盐。' },
+        { es: 'Mezcla las patatas con los huevos batidos.', zh: '把土豆和打好的鸡蛋混合。' },
+        { es: 'Echa la mezcla en la sartén y cocina cinco minutos por cada lado.', zh: '把混合物倒进锅里，每面煎五分钟。' },
+        { es: 'Por último, sírvela caliente. ¡Que aproveche!', zh: '最后，趁热上桌。祝好胃口！' },
+      ],
+      questions: [
+        {
+          question: '这份食谱需要几个土豆？',
+          options: ['四个', '两个', '六个'],
+          correctIndex: 0,
+          explanation: '“pela cuatro patatas”。',
+        },
+        {
+          question: '打完鸡蛋之后要做什么？',
+          options: ['把土豆和鸡蛋混合', '直接上桌', '再削土豆'],
+          correctIndex: 0,
+          explanation: '“Mezcla las patatas con los huevos batidos.”',
+        },
+        {
+          question: '每面要煎多久？',
+          options: ['五分钟', '一分钟', '十五分钟'],
+          correctIndex: 0,
+          explanation: '“cinco minutos por cada lado”。',
+        },
+      ],
+    },
   },
   {
     id: 'imperative-negative',
@@ -145,6 +310,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '「我们会赢」？', options: ['Ganaremos.', 'Ganamos.', 'Vamos a ganar.'], correctIndex: 0 },
     speakPrompt: 'El año que viene viajaré a España. Te llamaré mañana.',
     dictation: '¿Qué harás este fin de semana?',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：暑假计划（Planes de verano）',
+      context: '两位同事聊暑假计划，并对天气做推测。注意简单将来时既表计划也表推测。',
+      turns: [
+        { speaker: 'Sara', es: '¿Qué harás este verano?', zh: '你今年夏天打算做什么？' },
+        { speaker: 'Diego', es: 'Iré a Andalucía con mi pareja.', zh: '我会和伴侣去安达卢西亚。' },
+        { speaker: 'Sara', es: '¿Cuánto tiempo estaréis?', zh: '你们待多久？' },
+        { speaker: 'Diego', es: 'Estaremos dos semanas. Visitaremos Granada y Sevilla.', zh: '待两周。我们会去格拉纳达和塞维利亚。' },
+        { speaker: 'Sara', es: 'Hará mucho calor allí, ¿no?', zh: '那边会很热吧？' },
+        { speaker: 'Diego', es: 'Sí, seguramente hará más de cuarenta grados.', zh: '是的，大概会超过四十度。' },
+      ],
+      questions: [
+        {
+          question: 'Diego 夏天要去哪里？',
+          options: ['安达卢西亚', '加泰罗尼亚', '法国'],
+          correctIndex: 0,
+          explanation: '“Iré a Andalucía.”',
+        },
+        {
+          question: '他们要待多久？',
+          options: ['两周', '两天', '一个月'],
+          correctIndex: 0,
+          explanation: '“Estaremos dos semanas.”',
+        },
+        {
+          question: '他对天气怎么推测？',
+          options: ['会超过四十度', '会下雨', '会很凉快'],
+          correctIndex: 0,
+          explanation: '“seguramente hará más de cuarenta grados”（将来时表推测）。',
+        },
+      ],
+    },
   },
   {
     id: 'conditional',
@@ -157,6 +355,39 @@ export const A2_TOPICS: GrammarTopic[] = [
     quiz: { question: '礼貌「我想要一杯水」？', options: ['Quisiera un vaso de agua.', 'Quiero un vaso de agua.'], correctIndex: 0 },
     speakPrompt: 'Me gustaría aprender a bailar. ¿Podrías repetir eso?',
     dictation: 'Sería genial si pudieras venir.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：在银行礼貌办事',
+      context: '一位顾客在西班牙的银行用礼貌的条件式办理业务。注意 podría / me gustaría / le importaría 等委婉表达。',
+      turns: [
+        { speaker: 'Cliente', es: 'Buenos días, ¿podría ayudarme?', zh: '早上好，您能帮我吗？' },
+        { speaker: 'Empleada', es: 'Claro, ¿qué necesita?', zh: '当然，您需要什么？' },
+        { speaker: 'Cliente', es: 'Me gustaría abrir una cuenta.', zh: '我想开一个账户。' },
+        { speaker: 'Empleada', es: 'Perfecto. ¿Le importaría rellenar este formulario?', zh: '好的。您介意填一下这张表格吗？' },
+        { speaker: 'Cliente', es: 'En absoluto. ¿Podría explicarme las comisiones?', zh: '完全不介意。您能给我讲讲手续费吗？' },
+        { speaker: 'Empleada', es: 'Por supuesto, sería un placer.', zh: '当然，很乐意。' },
+      ],
+      questions: [
+        {
+          question: '顾客想办什么？',
+          options: ['开一个账户', '取钱', '换外币'],
+          correctIndex: 0,
+          explanation: '“Me gustaría abrir una cuenta.”',
+        },
+        {
+          question: '职员请顾客做什么？',
+          options: ['填一张表格', '出示护照', '稍后再来'],
+          correctIndex: 0,
+          explanation: '“¿Le importaría rellenar este formulario?”',
+        },
+        {
+          question: '顾客还想了解什么？',
+          options: ['手续费', '营业时间', '利率'],
+          correctIndex: 0,
+          explanation: '“¿Podría explicarme las comisiones?”',
+        },
+      ],
+    },
   },
   {
     id: 'por-para',

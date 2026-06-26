@@ -4,6 +4,7 @@ export type StepType =
   | 'dictation'
   | 'quiz'
   | 'read'
+  | 'reading'
   | 'practice'
   | 'reflect'
   | 'link'
@@ -14,7 +15,24 @@ export type StepType =
   | 'feynman'
   | 'shadowing'
   | 'scenario'
-  | 'srs';
+  | 'srs'
+  | 'coach';
+
+/** 课中可启动的训练工具（对应顶栏的面板） */
+export type CoachTool = 'phrase' | 'writing' | 'tutor' | 'listening' | 'adaptive' | 'shadow';
+
+export interface ReadingTurn {
+  speaker: string;
+  es: string;
+  zh: string;
+}
+
+export interface ReadingComprehensionQuestion {
+  question: string;
+  options: string[];
+  correctIndex: number;
+  explanation?: string;
+}
 
 export type SessionKind = 'micro' | 'deep' | 'review';
 
@@ -32,6 +50,8 @@ export interface Step {
   session: SessionKind;
   youtubeId?: string;
   youtubeTitle?: string;
+  /** 中文讲师/频道名 */
+  videoInstructor?: string;
   url?: string;
   urlLabel?: string;
   /** 口语练习：你需要用西语说的话 */
@@ -53,7 +73,19 @@ export interface Step {
   feynmanHint?: string;
   shadowingLines?: string[];
   scenarioTitle?: string;
-  scenarioItems?: string[];
+  scenarioItems?: ({ es: string; zh: string; note?: string } | string)[];
+  /** 阅读理解 / 对话情景 */
+  readingFormat?: 'dialogue' | 'article';
+  readingContext?: string;
+  readingTurns?: ReadingTurn[];
+  readingSentences?: { es: string; zh: string }[];
+  readingQuestions?: ReadingComprehensionQuestion[];
+  /** coach 步骤：要启动的训练工具 */
+  coachTool?: CoachTool;
+  /** coach 步骤：所依据的学习法/记忆法说明 */
+  coachMethod?: string;
+  /** coach 步骤：按钮文案 */
+  coachCta?: string;
 }
 
 export interface DayPlan {

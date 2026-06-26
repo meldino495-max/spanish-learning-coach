@@ -1,13 +1,16 @@
 {
   "name": "spanish-learning-coach",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "postinstall": "node scripts/install-electron.cjs",
+    "desktop": "npm run build && electron .",
+    "desktop:dev": "cross-env DESKTOP_DEV=1 electron ."
   },
   "dependencies": {
     "@react-oauth/google": "^0.13.5",
@@ -20,6 +23,8 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^35.7.5",
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",

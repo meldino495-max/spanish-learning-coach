@@ -1,5 +1,7 @@
 export type CefrLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
 
+import type { ScenarioPack } from '../scenarios/types';
+
 export interface GrammarTopic {
   id: string;
   title: string;
@@ -39,6 +41,22 @@ export interface GrammarTopic {
   feynmanQuestion?: string;
   feynmanHint?: string;
   shadowingLines?: string[];
+  /** 构建课程时注入的本课场景 */
+  unitScenario?: ScenarioPack;
+  /** 手写的阅读理解 / 对话情景（缺省时自动生成） */
+  reading?: {
+    format?: 'dialogue' | 'article';
+    title?: string;
+    context?: string;
+    turns?: { speaker: string; es: string; zh: string }[];
+    sentences?: { es: string; zh: string }[];
+    questions?: {
+      question: string;
+      options: string[];
+      correctIndex: number;
+      explanation?: string;
+    }[];
+  };
 }
 
 export const LEVEL_META: Record<

@@ -19,7 +19,11 @@ export interface SRSItem {
   reviewCount: number;
 }
 
-const STORAGE_KEY = 'es-coach-srs-v2';
+const LEGACY_ES_KEY = 'es-coach-srs-v2';
+
+function srsKey(prefix: string) {
+  return `${prefix}-srs-v2`;
+}
 
 function dayMs(days: number) {
   return days * 24 * 60 * 60 * 1000;
@@ -72,22 +76,40 @@ function migrateFromV1(): SRSItem[] {
   }
 }
 
-export function loadSRSItems(): SRSItem[] {
+export function loadSRSItems(storagePrefix: string): SRSItem[] {
+  const key = srsKey(storagePrefix);
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(key);
     if (raw) return JSON.parse(raw) as SRSItem[];
-    const migrated = migrateFromV1();
-    if (migrated.length) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+    if (storagePrefix === 'es-coach') {
+      const legacy = localStorage.getItem(LEGACY_ES_KEY);
+      if (legacy) {
+        localStorage.setItem(key, legacy);
+        return JSON.parse(legacy) as SRSItem[];
+      }
+      const migrated = migrateFromV1();
+      if (migrated.length) localStorage.setItem(key, JSON.stringify(migrated));
+      return migrated;
     }
-    return migrated;
+    return [];
   } catch {
     return [];
   }
 }
 
-export function saveSRSItems(items: SRSItem[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+export function saveSRSItems(storagePrefix: string, items: SRSItem[]) {
+  localStorage.setItem(srsKey(storagePrefix), JSON.stringify(items));
+}
+
+/**
+ * 跨实例同步：应用里有多处各自调用 useSRS（顶栏徽标、看板、各面板）。
+ * 任意一处增删/评分后，通过该总线通知其它实例从 localStorage 重新加载，
+ * 避免「加入记忆库后徽标/看板不刷新」的问题。
+ */
+export const srsBus = new EventTarget();
+
+export function srsEventName(prefix: string) {
+  return `srs:${prefix}`;
 }
 
 export function getDueItems(items: SRSItem[], now = Date.now()): SRSItem[] {

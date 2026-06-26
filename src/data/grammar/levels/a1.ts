@@ -70,6 +70,38 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Soy de China. Estoy en Barcelona. Soy estudiante y estoy contento.',
     dictation: 'Ella es profesora. Está en la escuela.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：第一天上语言学校',
+      context: '开学第一天，两名新同学在教室门口认识。注意 ser（身份/来源）和 estar（状态/位置）的区别。',
+      turns: [
+        { speaker: 'Ana', es: '¡Hola! Me llamo Ana. ¿Y tú?', zh: '你好！我叫 Ana。你呢？' },
+        { speaker: 'Kenji', es: 'Hola, soy Kenji. Mucho gusto.', zh: '你好，我是 Kenji。很高兴认识你。' },
+        { speaker: 'Ana', es: '¿De dónde eres?', zh: '你来自哪里？' },
+        { speaker: 'Kenji', es: 'Soy de Japón. ¿Y tú?', zh: '我来自日本。你呢？' },
+        { speaker: 'Ana', es: 'Soy española, de Sevilla. ¿Eres estudiante?', zh: '我是西班牙人，塞维利亚的。你是学生吗？' },
+        { speaker: 'Kenji', es: 'Sí, soy estudiante. Estoy un poco nervioso, pero contento.', zh: '是的，我是学生。我有点紧张，但很开心。' },
+      ],
+      questions: [
+        {
+          question: 'Kenji 来自哪里？',
+          options: ['日本', '西班牙', '塞维利亚'],
+          correctIndex: 0,
+          explanation: '他说 “Soy de Japón.”，用 ser 表来源。',
+        },
+        {
+          question: 'Ana 是哪里人？',
+          options: ['西班牙塞维利亚', '日本东京', '墨西哥'],
+          correctIndex: 0,
+        },
+        {
+          question: 'Kenji 现在的状态是？',
+          options: ['有点紧张但开心', '很累', '生病了'],
+          correctIndex: 0,
+          explanation: '“Estoy nervioso/contento” 用 estar 表一时的状态。',
+        },
+      ],
+    },
   },
   {
     id: 'present-ar',
@@ -86,6 +118,37 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Yo hablo español todos los días. Trabajo por la mañana y estudio por la noche.',
     dictation: 'Ellos hablan inglés y francés.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：午休聊日常',
+      context: '两位同事 Sara 和 Diego 在午休时聊各自的日常。注意 -ar 动词的现在时变位。',
+      turns: [
+        { speaker: 'Sara', es: '¿Trabajas o estudias?', zh: '你工作还是学习？' },
+        { speaker: 'Diego', es: 'Trabajo en una oficina y estudio español por la noche.', zh: '我在办公室工作，晚上学西语。' },
+        { speaker: 'Sara', es: '¿Hablas otros idiomas?', zh: '你说其他语言吗？' },
+        { speaker: 'Diego', es: 'Hablo inglés y un poco de francés.', zh: '我说英语和一点法语。' },
+        { speaker: 'Sara', es: '¿Practicas mucho el español?', zh: '你常练西语吗？' },
+        { speaker: 'Diego', es: 'Sí, escucho música y miro series en español.', zh: '是的，我听西语音乐、看西语剧。' },
+      ],
+      questions: [
+        {
+          question: 'Diego 晚上做什么？',
+          options: ['学西语', '工作', '看医生'],
+          correctIndex: 0,
+          explanation: '“estudio español por la noche”。',
+        },
+        {
+          question: 'Diego 会哪些语言？',
+          options: ['英语和一点法语', '只有英语', '德语和法语'],
+          correctIndex: 0,
+        },
+        {
+          question: 'Diego 怎么练西语？',
+          options: ['听音乐、看剧', '只背单词', '不练习'],
+          correctIndex: 0,
+        },
+      ],
+    },
   },
   {
     id: 'present-er-ir',
@@ -134,6 +197,40 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: '¿Cómo te llamas? ¿De dónde eres? ¿Cuántos años tienes?',
     dictation: '¿Qué hora es? Son las tres.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：语伴第一次通话',
+      context: 'Marta 和她的语伴 Tom 第一次视频通话，互相提问认识对方。留意各种疑问词。',
+      turns: [
+        { speaker: 'Marta', es: '¿Cómo te llamas?', zh: '你叫什么名字？' },
+        { speaker: 'Tom', es: 'Me llamo Tom. ¿Y tú?', zh: '我叫 Tom。你呢？' },
+        { speaker: 'Marta', es: 'Soy Marta. ¿De dónde eres?', zh: '我是 Marta。你来自哪里？' },
+        { speaker: 'Tom', es: 'Soy de Estados Unidos. Vivo en Chicago.', zh: '我来自美国，住在芝加哥。' },
+        { speaker: 'Marta', es: '¿Por qué estudias español?', zh: '你为什么学西语？' },
+        { speaker: 'Tom', es: 'Estudio español para viajar por Latinoamérica.', zh: '我学西语是为了去拉美旅行。' },
+        { speaker: 'Marta', es: '¿Cuántos años tienes?', zh: '你多大了？' },
+        { speaker: 'Tom', es: 'Tengo veintitrés años.', zh: '我二十三岁。' },
+      ],
+      questions: [
+        {
+          question: 'Tom 来自哪里？',
+          options: ['美国', '西班牙', '墨西哥'],
+          correctIndex: 0,
+          explanation: '“Soy de Estados Unidos.”',
+        },
+        {
+          question: 'Tom 为什么学西语？',
+          options: ['为了去拉美旅行', '为了工作', '为了考试'],
+          correctIndex: 0,
+        },
+        {
+          question: 'Tom 多大了？',
+          options: ['23 岁', '32 岁', '13 岁'],
+          correctIndex: 0,
+          explanation: '“Tengo veintitrés años.”',
+        },
+      ],
+    },
   },
   {
     id: 'numbers-time',
@@ -150,6 +247,39 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Son las ocho de la mañana. Hoy es martes. Cuesta quince euros.',
     dictation: 'Son las cinco menos cuarto.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：在西班牙酒吧点早餐',
+      context: '一位顾客在西班牙的 bar 点早餐、问价格和营业时间。这是西班牙日常最常见的场景之一，留意半岛常用语「¿Qué le pongo?」「Me pone…」。',
+      turns: [
+        { speaker: 'Camarero', es: 'Buenos días, ¿qué le pongo?', zh: '早上好，您要点什么？' },
+        { speaker: 'Cliente', es: 'Me pone un café con leche y una tostada, por favor.', zh: '请给我一杯拿铁和一份烤面包。' },
+        { speaker: 'Camarero', es: 'Muy bien. ¿Algo más?', zh: '好的。还要别的吗？' },
+        { speaker: 'Cliente', es: 'No, gracias. ¿Cuánto es?', zh: '不用了，谢谢。多少钱？' },
+        { speaker: 'Camarero', es: 'Son tres euros con cincuenta.', zh: '三欧元五十。' },
+        { speaker: 'Cliente', es: 'Aquí tiene. ¿A qué hora cerráis?', zh: '给您。你们几点关门？' },
+        { speaker: 'Camarero', es: 'Cerramos a las nueve de la noche.', zh: '我们晚上九点关门。' },
+      ],
+      questions: [
+        {
+          question: '顾客点了什么？',
+          options: ['拿铁和一份烤面包', '茶和蛋糕', '橙汁和三明治'],
+          correctIndex: 0,
+          explanation: '“un café con leche y una tostada”。',
+        },
+        {
+          question: '一共多少钱？',
+          options: ['3.50 欧元', '2.50 欧元', '5 欧元'],
+          correctIndex: 0,
+          explanation: '“tres euros con cincuenta”。',
+        },
+        {
+          question: '咖啡馆几点关门？',
+          options: ['晚上九点', '晚上七点', '下午五点'],
+          correctIndex: 0,
+        },
+      ],
+    },
   },
   {
     id: 'possessives',
@@ -198,6 +328,38 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Me gusta el café con leche. Me encanta viajar. No me gusta madrugar.',
     dictation: '¿Te gusta el fútbol? A mí me gusta mucho.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：聊聊各自的喜好',
+      context: '朋友 Lucía 和 Pablo 聊喜欢的东西。注意 gustar/encantar 的用法：物是主语，人用间接宾语。',
+      turns: [
+        { speaker: 'Lucía', es: '¿Te gusta el café?', zh: '你喜欢咖啡吗？' },
+        { speaker: 'Pablo', es: 'No mucho. Me gusta más el té.', zh: '不太喜欢。我更喜欢茶。' },
+        { speaker: 'Lucía', es: 'A mí me encanta viajar. ¿Y a ti?', zh: '我超爱旅行。你呢？' },
+        { speaker: 'Pablo', es: 'Me gusta viajar, pero no me gusta madrugar.', zh: '我喜欢旅行，但不喜欢早起。' },
+        { speaker: 'Lucía', es: '¿Qué te gusta hacer los fines de semana?', zh: '你周末喜欢做什么？' },
+        { speaker: 'Pablo', es: 'Me gustan las películas y me encanta cocinar.', zh: '我喜欢电影，超爱做饭。' },
+      ],
+      questions: [
+        {
+          question: 'Pablo 更喜欢喝什么？',
+          options: ['茶', '咖啡', '果汁'],
+          correctIndex: 0,
+          explanation: '“Me gusta más el té.”',
+        },
+        {
+          question: 'Pablo 不喜欢什么？',
+          options: ['早起', '旅行', '做饭'],
+          correctIndex: 0,
+          explanation: '“no me gusta madrugar”。',
+        },
+        {
+          question: 'Pablo 周末喜欢做什么？',
+          options: ['看电影、做饭', '踢足球', '睡懒觉'],
+          correctIndex: 0,
+        },
+      ],
+    },
   },
   {
     id: 'demonstratives',
@@ -262,6 +424,37 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Me levanto temprano. Me ducho y me visto. Me acuesto a las once.',
     dictation: 'Ella se llama Carmen.',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：室友聊早晚作息',
+      context: '室友 Nora 问 Iván 的日常作息。注意反身动词 levantarse / ducharse / acostarse 的用法。',
+      turns: [
+        { speaker: 'Nora', es: '¿A qué hora te levantas?', zh: '你几点起床？' },
+        { speaker: 'Iván', es: 'Me levanto a las siete.', zh: '我七点起床。' },
+        { speaker: 'Nora', es: '¿Te duchas por la mañana?', zh: '你早上洗澡吗？' },
+        { speaker: 'Iván', es: 'Sí, me ducho y me visto rápido.', zh: '是的，我洗澡然后快速穿衣。' },
+        { speaker: 'Nora', es: '¿A qué hora te acuestas?', zh: '你几点睡觉？' },
+        { speaker: 'Iván', es: 'Me acuesto a las once de la noche.', zh: '我晚上十一点睡。' },
+      ],
+      questions: [
+        {
+          question: 'Iván 几点起床？',
+          options: ['七点', '六点', '八点'],
+          correctIndex: 0,
+          explanation: '“Me levanto a las siete.”',
+        },
+        {
+          question: 'Iván 早上先做什么？',
+          options: ['洗澡再穿衣', '先吃早饭', '先看手机'],
+          correctIndex: 0,
+        },
+        {
+          question: 'Iván 几点睡觉？',
+          options: ['晚上十一点', '晚上九点', '晚上十二点'],
+          correctIndex: 0,
+        },
+      ],
+    },
   },
   {
     id: 'progressive',
@@ -326,6 +519,38 @@ export const A1_TOPICS: GrammarTopic[] = [
     },
     speakPrompt: 'Hay mucha gente en la calle. El mercado está cerca de mi casa.',
     dictation: '¿Hay una farmacia por aquí?',
+    reading: {
+      format: 'dialogue',
+      title: '情景对话：在街上问路',
+      context: '一名游客向路人问路。注意 hay（表存在「有」）和 estar（表位置「在」）的区别。',
+      turns: [
+        { speaker: 'Turista', es: 'Perdone, ¿hay una farmacia por aquí?', zh: '打扰一下，这附近有药店吗？' },
+        { speaker: 'Vecina', es: 'Sí, hay una cerca. Está en la esquina.', zh: '有的，附近有一家。在街角。' },
+        { speaker: 'Turista', es: '¿Y hay un cajero automático?', zh: '那有取款机吗？' },
+        { speaker: 'Vecina', es: 'Sí, el cajero está al lado del banco.', zh: '有，取款机在银行旁边。' },
+        { speaker: 'Turista', es: '¿Está lejos el metro?', zh: '地铁远吗？' },
+        { speaker: 'Vecina', es: 'No, está a cinco minutos a pie.', zh: '不远，步行五分钟。' },
+      ],
+      questions: [
+        {
+          question: '药店在哪里？',
+          options: ['在街角', '在银行里', '在地铁站'],
+          correctIndex: 0,
+          explanation: '“Está en la esquina.”',
+        },
+        {
+          question: '取款机在哪里？',
+          options: ['在银行旁边', '在药店里', '在地铁里'],
+          correctIndex: 0,
+          explanation: '“el cajero está al lado del banco”。',
+        },
+        {
+          question: '地铁离这里多远？',
+          options: ['步行五分钟', '步行二十分钟', '很远'],
+          correctIndex: 0,
+        },
+      ],
+    },
   },
   {
     id: 'a1-review',

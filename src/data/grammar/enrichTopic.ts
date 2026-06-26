@@ -106,6 +106,7 @@ export function enrichTopic(level: CefrLevel, unitIndex: number, topic: GrammarT
     ...topic,
     vocabulary,
     chunks,
+    unitScenario: getScenarioForUnit(unitIndex),
     feynmanQuestion:
       topic.feynmanQuestion ??
       `用中文向「完全不懂西语的朋友」解释：为什么本课例句用这样的语法？（例如：为什么是「${topic.examples[0] ?? topic.titleEs}」而不是别的说法？）`,

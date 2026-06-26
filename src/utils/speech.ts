@@ -1,18 +1,21 @@
-/** 浏览器 TTS 朗读西语 */
+/** 浏览器 TTS 朗读与语音识别工具 */
+import { getStoredOutputDeviceId } from './audioDeviceStore';
+import { speakWithDevices, stopAllAudioOutput } from './audioDevices';
+
+export { speakWithDevices, stopAllAudioOutput } from './audioDevices';
+
+/** 浏览器 TTS 朗读目标语言 */
+export function speakText(text: string, lang: string, rate = 0.85) {
+  void speakWithDevices(text, lang, rate, getStoredOutputDeviceId());
+}
+
+/** @deprecated 使用 speakText(text, 'es-ES') */
 export function speakSpanish(text: string, rate = 0.85) {
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'es-ES';
-  utter.rate = rate;
-  const voices = window.speechSynthesis.getVoices();
-  const esVoice =
-    voices.find((v) => v.lang.startsWith('es')) ?? voices.find((v) => v.lang.includes('ES'));
-  if (esVoice) utter.voice = esVoice;
-  window.speechSynthesis.speak(utter);
+  speakText(text, 'es-ES', rate);
 }
 
 export function stopSpeaking() {
-  window.speechSynthesis.cancel();
+  stopAllAudioOutput();
 }
 
 type SpeechRecognitionInstance = {
@@ -42,7 +45,7 @@ export function normalizeForCompare(s: string) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[¿?¡!,.\-;:'"]/g, '')
+    .replace(/[¿?¡!,.\-;:'"«»]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }

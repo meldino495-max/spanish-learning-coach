@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { SRSRating } from './srsCore';
 import {
   computeNextReview,
@@ -6,17 +6,52 @@ import {
   getNewItemsToday,
   loadSRSItems,
   saveSRSItems,
+  srsBus,
+  srsEventName,
   type SRSItem,
 } from './srsCore';
+import { logActivity } from '../utils/activityLog';
 
 export type { SRSItem, SRSRating };
 
-export function useSRS() {
-  const [items, setItems] = useState<SRSItem[]>(() => loadSRSItems());
+export function useSRS(storagePrefix: string) {
+  const [items, setItems] = useState<SRSItem[]>(() => loadSRSItems(storagePrefix));
+  // 记录最近一次「已同步」的序列化值，用于区分本地修改与外部更新，避免回环
+  const lastSerialized = useRef<string>(JSON.stringify(items));
 
+  // 切换语言：重新加载该语言的库
   useEffect(() => {
-    saveSRSItems(items);
-  }, [items]);
+    const loaded = loadSRSItems(storagePrefix);
+    lastSerialized.current = JSON.stringify(loaded);
+    setItems(loaded);
+  }, [storagePrefix]);
+
+  // 本地发生真实变化时：持久化并广播给其它实例
+  useEffect(() => {
+    const serialized = JSON.stringify(items);
+    if (serialized === lastSerialized.current) return; // 外部同步导致的相同数据，跳过避免回环
+    lastSerialized.current = serialized;
+    saveSRSItems(storagePrefix, items);
+    srsBus.dispatchEvent(new Event(srsEventName(storagePrefix)));
+  }, [storagePrefix, items]);
+
+  // 监听其它实例 / 其它标签页的更新，重新加载
+  useEffect(() => {
+    const reload = () => {
+      const loaded = loadSRSItems(storagePrefix);
+      const serialized = JSON.stringify(loaded);
+      if (serialized === lastSerialized.current) return;
+      lastSerialized.current = serialized;
+      setItems(loaded);
+    };
+    const name = srsEventName(storagePrefix);
+    srsBus.addEventListener(name, reload);
+    window.addEventListener('storage', reload);
+    return () => {
+      srsBus.removeEventListener(name, reload);
+      window.removeEventListener('storage', reload);
+    };
+  }, [storagePrefix]);
 
   const dueItems = useMemo(() => getDueItems(items), [items]);
   const newToday = useMemo(() => getNewItemsToday(items), [items]);
@@ -65,6 +100,7 @@ export function useSRS() {
 
   const rateItem = useCallback((id: string, rating: SRSRating) => {
     const now = Date.now();
+    logActivity(storagePrefix);
     setItems((prev) =>
       prev.map((i) => {
         if (i.id !== id) return i;
@@ -83,7 +119,7 @@ export function useSRS() {
         };
       }),
     );
-  }, []);
+  }, [storagePrefix]);
 
   const removeItem = useCallback((id: string) => {
     setItems((prev) => prev.filter((i) => i.id !== id));
@@ -96,9 +132,9 @@ export function useSRS() {
   return { items, dueItems, newToday, addItem, addMany, rateItem, removeItem, clearAll };
 }
 
-/** @deprecated 使用 useSRS */
+/** @deprecated 使用 useSRS(storagePrefix) */
 export function useAccumulation() {
-  const srs = useSRS();
+  const srs = useSRS('es-coach');
   return {
     items: srs.items.map((i) => ({
       id: i.id,

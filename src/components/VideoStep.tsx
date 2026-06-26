@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from 'react';
 import type { Step } from '../types';
-import { useGoogleAuth } from '../context/GoogleAuthContext';
-import {
-  youtubeEmbedUrl,
-  youtubeLoginThenWatchUrl,
-  youtubeThumbnailUrl,
-  youtubeWatchUrl,
-} from '../utils/youtube';
+import { useYoutubeSession } from '../context/YoutubeSessionContext';
+import { youtubeEmbedUrl } from '../utils/youtube';
+import { openExternalUrl } from '../utils/openExternal';
+import { InAppYoutubeLoginButton } from './InAppYoutubeLoginButton';
 
 interface Props {
   step: Step;
@@ -15,17 +12,31 @@ interface Props {
 }
 
 export function VideoStep({ step, done, onToggle }: Props) {
-  const id = step.youtubeId!;
-  const { isLinked } = useGoogleAuth();
+  const ytId = step.youtubeId!;
+  const { isYoutubeLoggedIn, authJustReturned, clearAuthReturn } = useYoutubeSession();
   const [embedFailed, setEmbedFailed] = useState(false);
-  const [tryEmbed, setTryEmbed] = useState(false);
+  const [tryEmbed, setTryEmbed] = useState(true);
+  const [embedKey, setEmbedKey] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const failTimerRef = useRef<number | null>(null);
 
+  const embedSrc = useMemo(() => youtubeEmbedUrl(ytId, window.location.origin), [ytId]);
+  const title = step.youtubeTitle ?? step.title ?? '教学视频';
+
   useEffect(() => {
     setEmbedFailed(false);
-    setTryEmbed(false);
-  }, [id]);
+    setTryEmbed(true);
+    setEmbedKey((k) => k + 1);
+  }, [ytId]);
+
+  useEffect(() => {
+    if (authJustReturned) {
+      setEmbedFailed(false);
+      setTryEmbed(true);
+      setEmbedKey((k) => k + 1);
+      clearAuthReturn();
+    }
+  }, [authJustReturned, clearAuthReturn]);
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -35,7 +46,7 @@ export function VideoStep({ step, done, onToggle }: Props) {
       const data = event.data;
       if (typeof data === 'string') {
         try {
-          const parsed = JSON.parse(data) as { event?: string; info?: { playerState?: number } };
+          const parsed = JSON.parse(data) as { event?: string };
           if (parsed.event === 'onError') setEmbedFailed(true);
         } catch {
           /* not json */
@@ -47,68 +58,51 @@ export function VideoStep({ step, done, onToggle }: Props) {
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, []);
+  }, [ytId]);
 
-  const startEmbed = () => {
-    setTryEmbed(true);
-    setEmbedFailed(false);
+  useEffect(() => {
+    if (!tryEmbed) return;
     if (failTimerRef.current) window.clearTimeout(failTimerRef.current);
     failTimerRef.current = window.setTimeout(() => {
       setEmbedFailed(true);
-    }, 8000);
-  };
-
-  useEffect(() => {
+    }, 12000);
     return () => {
       if (failTimerRef.current) window.clearTimeout(failTimerRef.current);
     };
-  }, []);
-
-  const watchOnYoutube = () => {
-    window.open(youtubeWatchUrl(id), '_blank', 'noopener,noreferrer');
-  };
-
-  const loginAndWatch = () => {
-    window.open(youtubeLoginThenWatchUrl(id), '_blank', 'noopener,noreferrer');
-  };
+  }, [ytId, tryEmbed, embedKey]);
 
   const showEmbed = tryEmbed && !embedFailed;
+
+  const openExternalWatch = (e: MouseEvent) => {
+    e.preventDefault();
+    openExternalUrl(`https://www.youtube.com/watch?v=${ytId}`);
+  };
 
   return (
     <div className="step-body">
       <p className="step-instructions">{step.instructions}</p>
-      {step.youtubeTitle && <p className="step-meta">📺 {step.youtubeTitle}</p>}
 
-      <div className="video-notice">
-        {isLinked ? (
-          <span className="notice-ok">✓ 已连接 Google 账号 — 建议在 YouTube 网站观看（更稳定、可同步历史）</span>
-        ) : (
-          <span className="notice-warn">
-            许多课程视频禁止页内嵌入。请先登录 YouTube，再点击下方红色按钮观看。
-          </span>
-        )}
-      </div>
+      {step.videoInstructor && (
+        <p className="video-instructor-badge">🇨🇳 中文讲解 · {step.videoInstructor} · YouTube</p>
+      )}
+      {title && <p className="step-meta">📺 {title}</p>}
 
-      <div className="video-preview-card">
-        <img className="video-thumb" src={youtubeThumbnailUrl(id)} alt={step.youtubeTitle ?? 'YouTube 视频'} />
-        <div className="video-preview-overlay">
-          <button type="button" className="btn btn-youtube btn-lg" onClick={watchOnYoutube}>
-            ▶ 在 YouTube 观看
-          </button>
-          {!isLinked && (
-            <button type="button" className="btn btn-google btn-lg" onClick={loginAndWatch}>
-              登录 YouTube 并观看
-            </button>
-          )}
-        </div>
-      </div>
+      {isYoutubeLoggedIn ? (
+        <p className="notice-ok">✓ 已在软件内登录 YouTube — 页内播放器将使用你的账号</p>
+      ) : (
+        <p className="notice-warn">
+          首次观看请先「软件内登录 YouTube」，登录后会自动回到本页，即可用账号在软件里看视频。
+        </p>
+      )}
 
       {showEmbed ? (
-        <div className="video-wrap">
+        <div className="video-wrap video-wrap-embed">
           <iframe
+            key={embedKey}
             ref={iframeRef}
-            src={youtubeEmbedUrl(id)}
-            title={step.youtubeTitle ?? step.title ?? 'YouTube'}
+            src={embedSrc}
+            title={title}
+            referrerPolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             onLoad={() => {
@@ -116,26 +110,43 @@ export function VideoStep({ step, done, onToggle }: Props) {
             }}
           />
         </div>
-      ) : embedFailed && tryEmbed ? (
+      ) : (
         <div className="video-fallback">
-          <p>页内播放失败（上传者可能禁止嵌入）。请改用上方按钮在 YouTube 观看。</p>
+          <p>页内播放不可用。请先软件内登录 YouTube，或点「重试页内播放」。</p>
+          <div className="video-thumb-placeholder" aria-hidden="true">
+            ▶
+          </div>
         </div>
-      ) : null}
+      )}
 
       <div className="step-actions">
-        {!tryEmbed && (
-          <button type="button" className="btn btn-secondary" onClick={startEmbed}>
-            尝试页内播放
+        {!showEmbed && (
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => {
+              setEmbedFailed(false);
+              setTryEmbed(true);
+              setEmbedKey((k) => k + 1);
+            }}
+          >
+            重试页内播放
           </button>
         )}
-        <button type="button" className="btn btn-youtube" onClick={watchOnYoutube}>
-          在 YouTube 打开 ↗
+        {!isYoutubeLoggedIn && (
+          <InAppYoutubeLoginButton label="软件内登录 YouTube" videoId={ytId} size="md" />
+        )}
+        {!isYoutubeLoggedIn && (
+          <InAppYoutubeLoginButton
+            className="btn btn-youtube"
+            label="登录并观看本课"
+            videoId={ytId}
+            size="md"
+          />
+        )}
+        <button type="button" className="btn btn-secondary btn-sm" onClick={openExternalWatch}>
+          外部浏览器打开 ↗
         </button>
-        {!isLinked && (
-          <button type="button" className="btn btn-google" onClick={loginAndWatch}>
-            登录后观看 ↗
-          </button>
-        )}
         <button type="button" className={`btn ${done ? 'btn-done' : 'btn-secondary'}`} onClick={onToggle}>
           {done ? '✓ 已完成' : '标记完成'}
         </button>

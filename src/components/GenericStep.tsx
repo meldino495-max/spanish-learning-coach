@@ -1,6 +1,8 @@
 import type { Step } from '../types';
-import { extractYoutubeId, youtubeLoginThenWatchUrl, youtubeWatchUrl } from '../utils/youtube';
-import { useGoogleAuth } from '../context/GoogleAuthContext';
+import { extractYoutubeId, youtubeWatchUrl } from '../utils/youtube';
+import { openExternalUrl } from '../utils/openExternal';
+import { InAppYoutubeLoginButton } from './InAppYoutubeLoginButton';
+import { useYoutubeSession } from '../context/YoutubeSessionContext';
 
 interface Props {
   step: Step;
@@ -9,7 +11,7 @@ interface Props {
 }
 
 export function GenericStep({ step, done, onToggle }: Props) {
-  const { isLinked } = useGoogleAuth();
+  const { isYoutubeLoggedIn } = useYoutubeSession();
   const ytId = step.url ? extractYoutubeId(step.url) : null;
 
   return (
@@ -24,20 +26,26 @@ export function GenericStep({ step, done, onToggle }: Props) {
       )}
       {step.url && (
         <div className="step-actions">
-          <a className="btn btn-primary" href={step.url} target="_blank" rel="noreferrer">
-            {step.urlLabel ?? '打开链接'} ↗
-          </a>
+          {ytId && !isYoutubeLoggedIn && (
+            <InAppYoutubeLoginButton label="软件内登录 YouTube" videoId={ytId} />
+          )}
           {ytId && (
-            <>
-              <a className="btn btn-youtube" href={youtubeWatchUrl(ytId)} target="_blank" rel="noreferrer">
-                在 YouTube 观看 ↗
-              </a>
-              {!isLinked && (
-                <a className="btn btn-google" href={youtubeLoginThenWatchUrl(ytId)} target="_blank" rel="noreferrer">
-                  登录 YouTube 并观看 ↗
-                </a>
-              )}
-            </>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => openExternalUrl(youtubeWatchUrl(ytId))}
+            >
+              外部浏览器打开 ↗
+            </button>
+          )}
+          {!ytId && (
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => openExternalUrl(step.url!)}
+            >
+              {step.urlLabel ?? '打开链接'} ↗
+            </button>
           )}
         </div>
       )}

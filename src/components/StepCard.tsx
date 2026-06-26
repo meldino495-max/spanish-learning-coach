@@ -1,5 +1,6 @@
-import type { Step, StepType } from '../types';
+import type { CoachTool, Step, StepType } from '../types';
 import { VideoStep } from './VideoStep';
+import { CoachStep } from './CoachStep';
 import { SpeakStep } from './SpeakStep';
 import { DictationStep } from './DictationStep';
 import { QuizStep } from './QuizStep';
@@ -10,6 +11,7 @@ import { TranslateStep } from './TranslateStep';
 import { FeynmanStep } from './FeynmanStep';
 import { ShadowingStep } from './ShadowingStep';
 import { ScenarioStep } from './ScenarioStep';
+import { ReadingStep } from './ReadingStep';
 import { SRSStep } from './SRSStep';
 
 const TYPE_LABELS: Record<StepType, string> = {
@@ -18,6 +20,7 @@ const TYPE_LABELS: Record<StepType, string> = {
   dictation: '👂 听：听写',
   quiz: '📝 写：测验',
   read: '📖 读：语法',
+  reading: '📰 读：阅读理解',
   practice: '💪 写：练习',
   reflect: '🪞 复盘',
   link: '🔗 资源',
@@ -29,6 +32,7 @@ const TYPE_LABELS: Record<StepType, string> = {
   shadowing: '👥 听+说：跟读',
   scenario: '🎬 说：场景',
   srs: '🔁 SRS 复习',
+  coach: '🚀 教练训练',
 };
 
 const SESSION_LABELS = {
@@ -42,11 +46,14 @@ interface Props {
   index: number;
   done: boolean;
   onToggle: () => void;
+  onOpenTool?: (tool: CoachTool) => void;
 }
 
-export function StepCard({ step, index, done, onToggle }: Props) {
+export function StepCard({ step, index, done, onToggle, onOpenTool }: Props) {
   const renderBody = () => {
     switch (step.type) {
+      case 'coach':
+        return <CoachStep step={step} done={done} onToggle={onToggle} onOpenTool={onOpenTool} />;
       case 'video':
         return <VideoStep step={step} done={done} onToggle={onToggle} />;
       case 'speak':
@@ -68,6 +75,8 @@ export function StepCard({ step, index, done, onToggle }: Props) {
         return <ShadowingStep step={step} done={done} onToggle={onToggle} />;
       case 'scenario':
         return <ScenarioStep step={step} done={done} onToggle={onToggle} />;
+      case 'reading':
+        return <ReadingStep step={step} done={done} onToggle={onToggle} />;
       case 'srs':
         return <SRSStep step={step} done={done} onToggle={onToggle} />;
       default:

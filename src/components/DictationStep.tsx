@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Step } from '../types';
-import { speakSpanish, textsMatch } from '../utils/speech';
+import { useLanguage } from '../context/LanguageContext';
+import { textsMatch } from '../utils/speech';
 
 interface Props {
   step: Step;
@@ -9,12 +10,13 @@ interface Props {
 }
 
 export function DictationStep({ step, done, onToggle }: Props) {
+  const { speak } = useLanguage();
   const [input, setInput] = useState('');
   const [checked, setChecked] = useState(false);
   const [correct, setCorrect] = useState(false);
 
   const play = () => {
-    if (step.dictationText) speakSpanish(step.dictationText);
+    if (step.dictationText) speak(step.dictationText);
   };
 
   const check = () => {

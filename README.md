@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# 西语母语冲刺教练（桌面版）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Windows 独立桌面软件，**不是网页版，也不是 Cursor 插件**。
 
-Currently, two official plugins are available:
+## 为什么选桌面软件而不是插件？
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| 方案 | 适合度 | 原因 |
+|------|--------|------|
+| **独立桌面软件（当前方案）** | ✅ 最佳 | 离线可用、本地 SRS 进度、麦克风口语/听写、窗口全屏学习 |
+| Cursor 插件 | ❌ 不适合 | 绑在 IDE 里，无法做每日 20 分钟系统学习、语音、视频、间隔重复 |
+| 网页版 | ❌ 已移除 | 你已明确要求不要网页版；GitHub Pages 部署已删除 |
 
-## React Compiler
+## 功能
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **A1–C2 语法课程**：111 个语法单元，听→说→读→写
+- **场景生活**：医院、银行、政务、超市、餐厅、酒店、机场、警察、租房、邮局等
+- **行业西语**：医生、律师、IT、教师、餐饮、零售、建筑、会计、房产、物流等 17 个行业
+- **学习方法**：间隔重复 SRS、语块、费曼、影子跟读、场景记忆
+- **本地存储**：进度与 SRS 保存在本机，无需联网
 
-## Expanding the ESLint configuration
+## 启动
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 方式一：双击 bat（推荐）
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+启动学习教练.bat
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+首次运行会自动 `npm install`，然后构建并打开桌面窗口。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 方式二：命令行
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run desktop        # 构建 + 启动桌面版
+npm run desktop:dev    # 开发模式（热更新 + Electron）
 ```
+
+## 使用说明
+
+1. 顶部 **📚 语法课程** — 按 A1–C2 系统学习
+2. 顶部 **🌍 场景 & 行业** — 按生活场景或职业浏览句子和词汇
+3. 点击 **🔊** 朗读西语；点击 **+ SRS** 加入间隔重复复习
+4. 顶部 **🔁** 按钮进入 SRS 复习
+
+## 技术栈
+
+- React + TypeScript + Vite
+- **独立桌面壳**：Electron（内置 Chromium），不依赖本机安装的 Chrome / Edge
+- Web Speech API（口语 / 听写）
+- YouTube 在软件窗口内登录与播放
+
+## 启动
+
+```bash
+npm install          # 首次会下载 Electron
+npm run desktop      # 构建 + 启动独立桌面窗口
+npm run desktop:dev  # 开发模式（热更新）
+```
+
+或双击 `启动学习教练.bat`。
+
+用户数据（含 YouTube 登录状态）保存在项目目录 `.app-data/`。
+
+## 仓库
+
+https://github.com/meldino495-max/spanish-learning-coach
