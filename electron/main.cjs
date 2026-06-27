@@ -22,6 +22,8 @@ const ROOT = path.join(__dirname, '..');
 
 const DIST = path.join(ROOT, 'dist');
 
+const ICON = path.join(ROOT, 'build', 'icon.ico');
+
 const PORT = Number(process.env.DESKTOP_PORT || 4173);
 
 const APP_URL = `http://127.0.0.1:${PORT}/`;
@@ -61,6 +63,11 @@ const MIME = {
 
 
 app.setPath('userData', path.join(ROOT, '.app-data'));
+
+// Windows 任务栏分组与通知标识：必须与开始菜单快捷方式的 AppUserModelID 一致。
+if (process.platform === 'win32') {
+  app.setAppUserModelId('com.secure-artifacts.spanish-learning-coach');
+}
 
 
 
@@ -681,6 +688,8 @@ function createWindow() {
     minHeight: 640,
 
     title: '多语言学习教练',
+
+    icon: ICON,
 
     autoHideMenuBar: true,
 

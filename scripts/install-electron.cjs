@@ -80,7 +80,26 @@ async function main() {
   console.log('Electron ready:', exePath);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Windows：把应用图标写入 electron.exe，使任务管理器/资源管理器/搜索里显示自定义图标。
+// 重装依赖后会重新解压出原版 electron.exe，这里在每次 postinstall 自动重新打标。
+function applyWindowsIcon() {
+  if (process.platform !== 'win32') return;
+  const icon = path.join(__dirname, '..', 'build', 'icon.ico');
+  if (!fs.existsSync(exePath) || !fs.existsSync(icon)) return;
+  let rcedit;
+  try {
+    rcedit = require('rcedit');
+  } catch {
+    return; // rcedit 未安装则跳过，不影响启动
+  }
+  return rcedit(exePath, { icon })
+    .then(() => console.log('Applied app icon to electron.exe'))
+    .catch((e) => console.warn('Skip electron.exe icon:', e.message));
+}
+
+main()
+  .then(applyWindowsIcon)
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
