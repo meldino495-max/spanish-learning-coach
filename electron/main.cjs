@@ -62,7 +62,12 @@ const MIME = {
 
 
 
-app.setPath('userData', path.join(ROOT, '.app-data'));
+// 开发/便携源码模式：把用户数据放在项目目录 .app-data，方便随项目携带。
+// 打包后（app.isPackaged）：程序目录是只读的（asar），必须使用系统默认可写目录
+// （%AppData%\<productName>），否则写设置/日志会失败导致启动崩溃。
+if (!app.isPackaged) {
+  app.setPath('userData', path.join(ROOT, '.app-data'));
+}
 
 // Windows 任务栏分组与通知标识：必须与开始菜单快捷方式的 AppUserModelID 一致。
 if (process.platform === 'win32') {

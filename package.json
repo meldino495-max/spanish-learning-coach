@@ -1,16 +1,20 @@
 {
   "name": "spanish-learning-coach",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "electron/main.cjs",
+  "productName": "多语言学习教练",
+  "description": "多语言学习教练 - 西语学习桌面应用",
+  "author": "secure-artifacts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "postinstall": "node scripts/install-electron.cjs",
     "desktop": "npm run build && electron .",
-    "desktop:dev": "cross-env DESKTOP_DEV=1 electron ."
+    "desktop:dev": "cross-env DESKTOP_DEV=1 electron .",
+    "pack:win": "npm run build && node scripts/pack.cjs"
   },
   "dependencies": {
     "@react-oauth/google": "^0.13.5",
